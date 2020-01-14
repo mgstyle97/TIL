@@ -9,4 +9,5 @@
 ## Contents
 
 - **자료구조**
-  1. [스택]([https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Stack](https://github.com/mgstyle97/TIL/tree/master/Data structure/Stack))
+  1. [스택](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Stack)
+

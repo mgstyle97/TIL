@@ -37,3 +37,75 @@
   - 스택에서는 삽입, 삭제와 관련하여 변수 1개만 존재하는 데 비해 큐에서는 두 개의 변수가 사용된다.
     - 삽입과 관련된 변수를 rear라고 한다.
     - 삭제와 관련된 변수를 front라고 한다.
+
+
+
+## 5.2 배열로 구현한 큐
+
+### 5.2-1 선형 큐(Linear Queue)
+
+- 큐도 스택과 마찬가지로 구현하는 방법이 여러가지이나 가장 간단한 방법은 1차원 배열을 쓰는 방법이다.
+
+  ![자료구조 선형큐에 대한 이미지 검색결과](http://www.tipssoft.com/data/cheditor4/1408/c9df1e0cbf27c9ac473a9a49bcafb16b_7rdg23Pw5ZQODRpVTbbiq.png)
+
+  - 삽입 삭제를 위한 front와 rear를 만든다.
+
+  ```c
+  typedef struct{
+      int queue[MAX_QUEUE_SIZE];
+      int front, rear;
+  }QueueType;
+  ```
+
+  - front와 rear의 초깃값은 -1이다. front는 첫번째 요소의 하나 앞을 가리키고 rear는 마지막 요소를 가리킨다.
+    - 데이터가 증가하게 되면 rear가 하나 증가하고 그 위치에 데이터가 저장된다.
+    - 삭제할 때는 front가 하나 증가하고 그 위치에 있던 데이터를 삭제한다.
+    - 위와 같은 큐를 **선형 큐(linear queue)**라고 한다.
+  - front와 rear의 값이 계속 증가만 하기 때문에 <span style="color:red">언젠가는 배열의 끝에 도달하게 되고 배열의 앞부분이 비어 있더라도 사용하지 못한다는</span> 점이다.
+
+
+
+### 5.2-2 원형 큐(Circular Queue)
+
+- 선형 큐의 문제는 배열을 선형으로 생각하지 말고 원형으로 생각하면 쉽게 해결할 수 있다.
+
+  - 즉 front와 rear의 값이 MAX_QUEUE_SIZE-1에 도달하면 다음에 증가되는 값은 0이 되도록 하는 것이다. 배열이 원형으로 처음과 끝이 연결되어 있다고 생각하는 것이다. 이것을 **원형 큐(circular queue)**라고 한다.
+
+  ![image-20200120203944888](C:\Users\mgsty\AppData\Roaming\Typora\typora-user-images\image-20200120203944888.png)
+
+  - 원형 큐에서는 front와 rear의 개념이 약간 변경된다.
+    - 초기값은 -1이 아닌 0이다.
+    - front와 rear가 값이 같으면 원형 큐가 비어 있음을 나타낸다.
+    - 원형 큐에서는 하나의 자리는 항상 비워둔다. 왜냐하면 포화 상태와 공백 상태를 구별하기 위해서이다.
+    - front = rear이면 공백 상태가 되고 만약 front가 rear보다 하나 앞에 있으면 포화 상태가 된다.
+
+  ![image-20200120204517771](C:\Users\mgsty\AppData\Roaming\Typora\typora-user-images\image-20200120204517771.png)
+
+  - 원형 큐의 구현에 있어서 중요한 것은 front와 rear를 원형으로 회전시켜야 한다는 것이다.
+
+    - 이는 나머지 연산자를 이용하여 쉽게 구현할 수 있다.
+    - **enqueue연산**
+
+    ```c
+    void enqueue(QueueType *q, element e){
+        if(is_full(q)){
+            fprintf(stderr, "큐 포화 에러\n");
+            exit(1);
+        }
+        q->queue[++(q->rear)%MAX_QUEUE_SIZE] = e;
+    }
+    ```
+
+    - **dequeue연산**
+
+    ```c
+    element dequeue(QueueType *q){
+        if(is_empty(q)){
+            fprintf(stderr, "큐 공백 에러\n");
+            exit(1);
+        }
+        return q->queue[++(q->front)%MAX_QUEUE_SIZE];
+    }
+    ```
+
+    

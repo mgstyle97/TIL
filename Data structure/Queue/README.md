@@ -71,7 +71,7 @@
 
   - 즉 front와 rear의 값이 MAX_QUEUE_SIZE-1에 도달하면 다음에 증가되는 값은 0이 되도록 하는 것이다. 배열이 원형으로 처음과 끝이 연결되어 있다고 생각하는 것이다. 이것을 **원형 큐(circular queue)**라고 한다.
 
-  ![image-20200120203944888](C:\Users\mgsty\AppData\Roaming\Typora\typora-user-images\image-20200120203944888.png)
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrDOOgLT0-TvIkAflLcSbZh_ddx33nzt0oG2gNj0zYB6vGuPP3fQ&amp;s" alt="자료구조 원형큐에 대한 이미지 검색결과" style="zoom:200%;" />
 
   - 원형 큐에서는 front와 rear의 개념이 약간 변경된다.
     - 초기값은 -1이 아닌 0이다.
@@ -79,7 +79,7 @@
     - 원형 큐에서는 하나의 자리는 항상 비워둔다. 왜냐하면 포화 상태와 공백 상태를 구별하기 위해서이다.
     - front = rear이면 공백 상태가 되고 만약 front가 rear보다 하나 앞에 있으면 포화 상태가 된다.
 
-  ![image-20200120204517771](C:\Users\mgsty\AppData\Roaming\Typora\typora-user-images\image-20200120204517771.png)
+  ![자료구조 원형큐 에러상태에 대한 이미지 검색결과](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile30.uf.tistory.com%2Fimage%2F24454C3B537BFDF720A292)
 
   - 원형 큐의 구현에 있어서 중요한 것은 front와 rear를 원형으로 회전시켜야 한다는 것이다.
 

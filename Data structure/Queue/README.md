@@ -14,7 +14,7 @@
 
   ![자료구조 큐에 대한 이미지 검색결과](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F9929C0495C932BB1153D55)
 
-  - 다음 그림과 같이 삽입이 일어나느 곳을 **후단(Rear)**이라고 하고 삭제가 일어나는 곳을 **전단(Front)**이라고 한다.
+  - 다음 그림과 같이 삽입이 일어나는 곳을 **후단(Rear)**이라고 하고 삭제가 일어나는 곳을 **전단(Front)**이라고 한다.
 
 - 큐 추상 데이터 타입
 

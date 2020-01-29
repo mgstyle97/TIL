@@ -11,4 +11,5 @@
 - **자료구조**
   1. [스택](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Stack)
   2. [큐](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Queue)
+  3. [연결 리스트](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Linked_list)
 

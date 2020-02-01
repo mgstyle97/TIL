@@ -103,6 +103,8 @@
 
 ### 멀티 플레이어 게임
 
+[멀티 플레이어 게임](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list%202/multigame.c)
+
 ## 7.3 이중 연결 리스트
 
 - 단일 연결 리스트에서 임의의 노드의 후속 노드를 찾기는 쉽지만, 선행 노드를 찾으려면 구조상 아주 어렵다.

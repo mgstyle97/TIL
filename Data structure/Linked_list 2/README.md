@@ -12,7 +12,7 @@
       - 하나의 노드에서 링크를 계속 따라 가면 결국 모든 노드를 지나 자기 자신으로 되돌아 올 수 있는 것이다.
       - 노드의 삽입과 삭제가 단순 연결 리스트보다는 용이해 진다는 것이다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/circular_linked_list.PNG">
+  <img src="./picture/circular_linked_list.PNG">
 
   - 특히 유용한 경우는 리스트의 끝에 노드를 삽입하는 연산이 단순 연결 리스트보다 효율적일 수 있다는 것이다.
     - 단순 연결 리스트에서 리스트의 끝에 노드를 추가하려면 첫 번째 노드에서부터 링크를 따라서 노드의 개수만큼 진행하여 마지막 노드까지 가야한다.
@@ -35,7 +35,7 @@
 
 - 새로운 노드의 링크인 node->link가 첫 번째 노드를 가리키게 하고 다음에 마지막 노드의 링크가 node를 가리키게 하면 된다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/insert_first().PNG">
+  <img src="./picture/insert_first().PNG">
 
   ```C
   ListNode* insert_first(ListNode *head, element data)
@@ -62,7 +62,7 @@
 
   - head의 위치만 새로운 노드로 바꾸어주면 새로운 노드가 마지막 노드가 된다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/insert_last().PNG">
+  <img src="./picture/insert_last().PNG">
 
   ```c
   ListNode* insert_last(ListNode *head, element data)
@@ -91,7 +91,7 @@
   - 현재 실행중인 모든 응용 프로그램은 원형 연결 리스트에 보관되며 운영 체제는 원형 연결 리스트에 있는 프로그램의 실행을 위해 고정된 시간 슬롯을 제공한다.
   - 운영 체제는 모든 응용 프로그램이 완료될 때가지 원형 연결 리스트를 계속 순회한다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/CPU.PNG">
+  <img src="./picture/CPU.PNG">
 
 - 멀티 플레이어 게임
 
@@ -99,7 +99,7 @@
 
 - 원형 연결 리스트는 원형 큐를 만드는데도 사용할 수 있다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/circular_queue.PNG">
+  <img src="./picture/circular_queue.PNG">
 
 ### 멀티 플레이어 게임
 
@@ -118,7 +118,7 @@
   - 링크가 양방향이므로 양방향으로 검색이 가능해진다.
   - 단점으로는 공간을 많이 차지하고 코드가 복잡해진다는 것이다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/doubly_linked_list.PNG">
+  <img src="./picture/doubly_linked_list.PNG">
 
 - 실제 응용에서는 이중 연결 리스트와 원형 연결 리스트를 혼합한 형태가 많이 사용된다.
 
@@ -134,7 +134,7 @@
   -  링크 필드는 포인터로 이루어진다.
   -  노드의 왼쪽 링크 필드 llink는 선행 노드를, 오른쪽 링크 필드 rlink는 후속 노드를 가리킨다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/node.PNG">
+  <img src="./picture/node.PNG">
 
   ```c
   typedef int element;
@@ -154,7 +154,7 @@
   - 즉 앞뒤로 똑같이 이동할 수 있음을 나타낸다.
     - 이러한 관계는 공백 리스트에도 성립한다. 
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/head_node.PNG">
+  <img src="./picture/head_node.PNG">
 
   ```C
   void init(DListNode *phead)
@@ -172,7 +172,7 @@
 
   - 새로 만들어진 노드의 링크를 먼저 바꾸는 데, 이는 새로 만들어진 노드의 링크는 아무런 정보도 가지고 있지 않기 때문에 변경하여도 안전하기 때문이다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/dinsert().PNG">
+  <img src="./picture/dinsert().PNG">
 
   ```c
   void dinsert(DListNode *before, element data)
@@ -192,7 +192,7 @@
 
 - 삭제 연산은 헤드 노드가 아니라면 선행 노드의 rlink는 삭제 노드의 rlink를 가리키고, 삭제 노드의 후속 노드의 llink가 선행 노드를 가리키면 된다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/ddelete().PNG">
+  <img src="./picture/ddelete().PNG">
 
   ```c
   void ddelete(DListNode *head, DListNode removed)
@@ -219,7 +219,7 @@
     - 동적 메모리 할당만 할 수만 있으면 스택에 새로운 요소를 삽입할 수 있다.
   - 연결 리스트를 이용한 스택은 동적 메모리 할당이나 해제를 해야 하므로 삽입이나 삭제 시간은 좀 더 걸린다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/linked_stack.PNG">
+  <img src="./picture/linked_stack.PNG">
 
   - 노드의 구조는 저장할 데이터 필드와 다음 노드를 가리키는 포인터인 링크 필드로 구성된다.
   - 스택에서 상단에 있는 요소를 가리키는 top은 더 이상 정수가 아니고 노드를 가리키는 포인터로 선언된다.
@@ -248,7 +248,7 @@
 
 - 삽입 연산에서는 먼저 동적 메모리 할당으로 노드를 만들고 이 노드를 첫 번째 노드로 삽입한다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/linked_stack_push().PNG">
+  <img src="./picture/linked_stack_push().PNG">
 
   ```C
   void push(LinkedStackType *s, element item)
@@ -266,7 +266,7 @@
 
 - top 포인터의 값을 top 포인터가 가리키는 노드로 변경한 다음 top이 원래 가리키고 있던 노드를 동적 메모리 해제를 하면된다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/linked_stack_pop().PNG">
+  <img src="./picture/linked_stack_pop().PNG">
 
   ```c
   element pop(LinkedStackType *s)
@@ -303,7 +303,7 @@
     - 큐에 요소가 없는 경우에는 front와 rear는 NULL 값이 된다.
   - 큐의 요소들은 구조체로 정의되며 이 구조체는 데이터를 저장하는 data 필드와 다음 노드를 가리키기 위한 포인터가 들어 있는 link 필드로 이루어져 있다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/linked_queue.PNG">
+  <img src="./picture/linked_queue.PNG">
 
   - 연결된 스택과 마찬가지로 연관된 데이터는 front와 rear이지만 일관성을 위해 LinkedQueueType이라는 구조체 타입으로 새로 정의한다.
 
@@ -327,9 +327,9 @@
 
   - 큐가 공백상태일 때 새로운 데이터가 삽입이 된다면 front와 rear 모두 새로운 노드를 가리키도록 하면 된다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/linked_queue_insert_null.PNG">
+  <img src="./picture/linked_queue_insert_null.PNG">
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/linked_queue_enqueue().PNG">
+  <img src="./picture/linked_queue_enqueue().PNG">
 
   ```C
   void enqueue(LinkedQueueType *q, element item)
@@ -356,7 +356,7 @@
 
   - front가 가리키는 노드를 삭제할 노드 포인터 변수가 가리키고 front는 front가 가리키던 노드가 가리키는 노드를 가리킨 후 삭제할 노드를 동적 메모리 해제를 하면된다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Data structure/7. 연결 리스트 2/linked_queue_dequeue().PNG">
+  <img src="./picture/linked_queue_dequeue().PNG">
 
   ```c
   element dequeue(LinkedQueueType *q)

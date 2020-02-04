@@ -54,7 +54,7 @@
   - 배열을 이용하먄 리스트 ADT를 가장 간단하게 구현할 수 있지만 크기가 고정되는 점이 단점이다.
   - 포인터를 이용하여 연결 리스트를 만드는 방법은 필요할 때마다 중간에 속지를 추가해서 사용할 수 있는 바인더 공책과 비슷하다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/list.PNG?raw=true)
+  ![](./picture/list.PNG)
 
   - 배열을 사용한 리스트 구현
     - 장점은 구현이 간단하고 속도가 빠르다.
@@ -154,7 +154,7 @@
 
 - 리스트의 pos 위치에 새로운 항목을 추가하려면 pos부터 마지막 항목까지 한 칸씩 오른쪽으로 이동하여 빈자리를 만든 후에, 새로운 항목을 pos 위치에 저장하여야 한다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/operator_insert_array.PNG?raw=true)
+  ![](./picture/operator_insert_array.PNG)
 
   ```c
   void insert(ArrayListType *L, int pos, element item)
@@ -177,7 +177,7 @@
 
   - 삽입 연산과 마찬가지로 삭제한 후 array[pos+1] 부터 array[size-1] 까지를 한 칸씩 앞으로 이동해야 한다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/operator_delete_array.PNG?raw=true)
+  ![](./picture/operator_delete_array.PNG)
 
   ```c
   element delete(ArrayListType *L, int pos)
@@ -212,18 +212,18 @@
   - 연결된 표현은 포인터를 사용하여 데이터들을 연결한다.
   - 연결된 표현은 널리 사용되며 추상 데이터 타입"리스트"의 구현에만 사용되는 것이 아니고 다른 여러 가지의 자료구조(트리, 그래프, 스택, 큐) 등을 구현하는데도 많이 사용된다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/linked_representation.PNG?raw=true)
+  ![](./picture/linked_representation.PNG)
 
 - **연결 리스트(linked list)** : 연결된 표현으로 데이터들은 메인 메모리상의 어디에나 흩어져서 존재하고 물리적으로 흩어져 있는 자료들을 서로 연결하여 하나로 묶는 방법 
 
   - 연결하는 줄은 **포인터(pointer)**로 구현한다.
   - 삽입 : 연결 리스트에서는 앞뒤에 있는 데이터들을 이동할 필요가 없이 줄만 변경 시켜주면 된다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/operator_insert_linked_list.PNG?raw=true)
+  ![](./picture/operator_insert_linked_list.PNG)
 
   - 삭제 : 삭제 연산 또한 마찬가지로 데이터들을 옮길 필요가 없이 그냥 데이터들을 연결하는 줄만 수정하면 된다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/operator_delete_linked_list.PNG?raw=true)
+  ![](./picture/operator_delete_linked_list.PNG)
 
   - 하나의 프로그램 안에 여러개의 연결 리스트가 존재할 때 첫 번째 데이터만 구별하면 다른 데이터들은 줄만 따라가면 얻을 수 있다.
   - 연결 리스트는 데이터를 저장할 공간이 필요할 때마다 동적으로 공간을 만들어서 쉽게 추가할 수 있다.
@@ -238,7 +238,7 @@
   - 연결 리스트는 이들 노드들의 집합이며, 노드들은 메모리의 어떤 위치에나 있을 수 있으며 다른 노드로 가기 위해서는 현재 노드가 가지고 있는 포인터를 이용하면 된다.
   - 노드는 **데이터 필드(data field)**와 **링크 필드(link field)**로 구성되어 있다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/linked_list_node.PNG?raw=true)
+  ![](./picture/linked_list_node.PNG)
 
   - 데이터 필드에는 우리가 저장하고 싶은 데이터가 들어간다.
     - 데이터는 정수가 될 수도 있고 구조체와 같은 복잡한 데이터가 될 수도 있다.
@@ -262,7 +262,7 @@
 
 - **이중 연결 리스트(doubly linked list)** : 하나의 링크는 앞에 있는 노드를 가리키고 또 하나의 링크는 뒤에 있는 노드를 가리킨다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/linked_list_kinds.PNG?raw=true)
+  ![](./picture/linked_list_kinds.PNG)
 
 
 
@@ -272,7 +272,7 @@
   - 단순 연결 리스트에서는 노드들이 하나의 링크 필드를 가지며 이 링크 필드를 이용하여 모든 노드들이 연결되어 있다.
   - 마지막 노드의 링크 필드 값은 NULL이 된다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/singly_linked_list.PNG?raw=true)
+  ![](./picture/singly_linked_list.PNG)
 
 
 
@@ -284,7 +284,7 @@
   - 구조체 안에는 데이터를 저장하는 data 필드와 포인터가 저장되어 있는 link 필드가 존재한다.
   - data 필드는 element 타입의 데이터를 저장하고, link 필드는 ListNode를 가리키는 포인터로 정의되며 다음 노드의 주소가 저장된다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/node.PNG?raw=true)
+  ![](./picture/node.PNG)
 
   ```c
   typedef int element;
@@ -317,13 +317,13 @@
 
 - 일반적으로 연결 리스트에서는 필요할 때마다 동적 메모리 할당을 이용하여 노드를 동적으로 생성한다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/create_node.PNG?raw=true)
+  ![](./picture/create_node.PNG)
 
   ```C
   head = (ListNode *)malloc(sizeof(ListNode));
   ```
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/reset_node.PNG?raw=true)
+  ![](./picture/reset_node.PNG)
 
   ```c
   head->data = 10;
@@ -336,7 +336,7 @@
 
 - 일반적으로 연결 리스트에는 여러 개의 노드가 서로 연결되어 있다 따라서 동일한 방식으로 두 번째 노드를 동적으로 생성한 뒤 첫 번째 노드의 link 필드가 두 번쨰 노드를 가리키게 하면 된다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/new_node_link.PNG?raw=true)
+  ![](./picture/new_node_link.PNG)
 
   ```c
   ListNode *p;
@@ -386,7 +386,7 @@ print_list() : 리스트를 방문하여 모든 항목을 출력하는 함수
   - 새로운 노드를 하나 생성하고 새로운 노드의 link에 현재의 head 값을 저장한 후에, head를 변경하여 새로 만든 노드를 가리키도록 하면 된다.
   - insert_first()는 변경된 헤드 포인터를 반환한다. 따라서 반환된 값을 헤드포인터에 저장한다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/insert_first().PNG?raw=true)
+  ![](./picture/insert_first().PNG)
 
   ```c
   ListNode* insert_first(ListNode *head, element value)
@@ -408,7 +408,7 @@ print_list() : 리스트를 방문하여 모든 항목을 출력하는 함수
 
   - 이때는 반드시 삽입되는 위치의 선행 노드를 알아야 삽입이 가능하기 때문에 pre 포인터 변수가 필요하다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/insert().PNG?raw=true)
+  ![](./picture/insert().PNG)
 
   ```c
   // 노드 pre 뒤에 새로운 노드 삽입
@@ -432,7 +432,7 @@ print_list() : 리스트를 방문하여 모든 항목을 출력하는 함수
   ListNode* delete_first(ListNode *head);
   ```
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/delete_first().PNG?raw=true)
+  ![](./picture/delete_first().PNG)
 
   ```c
   ListNode* delete_first(ListNode *head)
@@ -451,7 +451,7 @@ print_list() : 리스트를 방문하여 모든 항목을 출력하는 함수
 
 - 연결 리스트를 변경할 head와 삭제할 노드의 전에 노드를 매개 변수로 받으면 된다.
 
-  ![](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Linked_list/picture/delete().PNG?raw=true)
+  ![](./picture/delete().PNG)
 
   ```c
   // pre가 가리키는 노드의 다음 노드를 삭제한다.

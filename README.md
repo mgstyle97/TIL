@@ -17,3 +17,4 @@
   
 - 자바
   - [1. 자바 시작하기](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_1)
+  - [2. 변수와 타입](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_2)

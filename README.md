@@ -13,6 +13,7 @@
   - [큐](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Queue)
   - [연결 리스트](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Linked_list)
   - [연결 리스트 2](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Linked_list%202)
+  - [트리](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Tree)
   
 - 자바
   - [1. 자바 시작하기](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_1)

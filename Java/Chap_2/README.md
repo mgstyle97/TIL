@@ -309,3 +309,353 @@
 
 #### char 타입
 
+- 자바는 모든 문자를 유니코드(Unicode)로 처리한다.
+
+  - 유니코드는 세계각국의 문자들을 코드값으로 매핑한 국제 표준 규약이다.
+  - 유니코드는 하나의 문자에 대해 하나의 코드값을 부여하기 때문에 영문 'A' 및 한글 '가'도 하나의 코드값을 갖는다.
+  - 유니코드는 0~66535 범위의 2byte 크기를 가진 정수값이다.
+    - 0~127까지는 아스키(ASCII) 문자(특수기호 및 영어 알파벳)가 할당되어 있고, 44032~55203까지는 한글 11172자가 할당되어 있다.
+
+- 자바는 하나의 유니코드를 저장하기 위해 2byte 크기인 char 타입에 저장할 수 있는 값은 0~65535까지 2<sup>16</sup>개이다.
+
+  - char 타입 변수에 작은 따옴표(')로 감싼 문자를 대입하면 해당 문자의 유니코드가 저장된다.
+
+  ```java
+  char var1 = 'A';	//유니코드: 0x0041 -> 2진수: 00000000 01000001
+  char var2 = 'B';	//유니코드: 0x0042 -> 2진수: 00000000 01000010
+  char var3 = '가';	//유니코드: 0xAC00 -> 2진수: 10101100 00000000
+  char var4 = '각';	//유니코드: 0xAC01 -> 2진수: 10101100 00000001
+  ```
+
+  <img src="./picture/char variable.PNG">
+
+  - char 변수에 작은 따옴표(')로 감싼 문자가 아니라 직접 유니코드 정수값을 저장할 수도 있다.
+    - 특정 문자의 유니코드를 안다면 10진수 또는 16진수로 저장하면 된다.
+    - 16진수로 저장할 경우에 유니코드라는 의미에서 '\u + 16진수값' 형태로 저장하면 된다.
+
+  ```java
+  char c = 65;
+  char c = '\u0041';
+  ```
+
+  - 프로그램 코드에서 char 변수에 저장된 유니코드를 알고 싶다면 char 타입 변수를 int 타입 변수에 저장하면 된다.
+
+  ```java
+  char c = 'A';
+  int unicode = c;
+  ```
+
+  <img src="./picture/CharExample.PNG">
+
+  - 만약 문자열을 저장하고 싶다면 String 타입을 사용해야 하는데, String 변수를 선언하고, 큰 따옴표(")로 감싼 문자열 리터럴을 대입하면 된다.
+
+  ```java
+  String name = "홍길동";
+  ```
+
+  - String은 기본 타입이 아니다.
+    - String은 클래스 타입이고, String 변수는 참조 변수이다.
+    - 문자열을 String 변수에 대입하면 문자열이 변수에 직접 저장되는 것이 아니라, String 객체가 생성되고, String 변수는 String 객체의 번지를 참조하게 된다.
+  - char 타입의 변수에 어떤 문자를 대입하지 않고 단순히 초기화를 할 목적으로 작은 따옴표(') 두개를 연달아 붙인 빈(empty) 문자를 대입하면 컴파일 에러가 발생한다. 그렇기 때문에 공백(유니코드:32) 하나를 포함해서 초기화해야 한다.
+
+  ````java
+  char c = '';	//컴파일 에러 -> char c = ' '
+  ````
+
+  - 하지만 String 변수는 큰 따옴표(") 두 개를 연달아 붙인 빈 문자를 대입해도 괜찮다.
+
+
+
+#### short 타입
+
+- **short 타입** : 2byte(16bit)로 표현되는 정수값을 저장할 수 있는 데이터 타입이다.
+  - 저장할 수 있는 값의 범위는 - 32,768~32,767(-2<sup>15</sup>~(2<sup>15</sup>-1)) 이다.
+  - C언어와의 호환을 위해 사용되며 비교적 자바에서는 잘 사용되지 않는 타입이다.
+
+
+
+#### int 타입
+
+- **int 타입** : 4byte(32bit)로 표현되는 정수값을 저장할 수 있는 데이터 타입이다.
+
+  - 저장할 수 있는 값의 범위는 -2,147,483,648~2,147,483,647(-2<sup>31</sup>~(2<sup>31</sup>-1)) 이다.
+
+  - int 타입은 자바에서 정수 연산을 하기 위한 기본 타입이다.
+
+    - byte 타입 또는 short 타입의 변수를 +연산하면 int 타입으로 변환된 후 연산되고 연산의 결과 역시 int 타입이 된다.
+    - byte 타입이나 short 타입으로 변수를 선언한 것과 int 타입으로 선언한 것의 성능 차이는 거의 없다.
+
+    - 메모리가 크게 부족하지 않다면 정수를 저장할 때는 일반적으로 int 타입을 사용한다.
+
+  - 정수 값을 직접 코드에서 입력할 경우 8진수, 10진수, 16진수로 표현할 수 있다.
+
+    - 8진수일 경우 숫자 앞에 '0'을 붙이면 되고, 16진수는 '0x'를 붙이면 된다.
+
+  ```java
+  int number = 10;
+  int octNumber = 012;
+  int hexNumber = 0xA;
+  ```
+
+  - 변수에 어떤 진수로 입력을 하더라도 동일한 값이 2진수로 변환되어 저장된다.
+    - 10이 int 타입 변수에 저장되면 int가 4byte의 크기를 가지기 때문에 4byte의 공간을 차지하면서 총 32bit로 10을 표현한다.
+    - 10은 1byte로 충분히 표현이 가능하기 때문에 나머지 상위 3byte의 bit 값은 모두 0이다.
+
+  <img src="./picture/int byte.PNG">
+
+  <img src="./picture/IntExample.PNG">
+
+
+
+#### long 타입
+
+- **long 타입** : 8byte(64bit)로 표현되는 정수값을 저장할 수 있는 데이터 타입이다.
+
+  - 저장할 수 있는 값의 범위는 -9,223,372,036,854,775,808~9,223,372,036,854,775,807(-2<sup>63</sup>~(2<sup>63</sup>-1)) 이다.
+
+  - 수치가 큰 데이터를 다루는 프로그램에서는 long 타입이 필수적으로 사용된다.
+
+  - long 타입의 변수를 초기화할 때에는 정수값 뒤에 소문자 'l'이나 대문자'L'을 붙일 수 있다.
+
+    - 정수 데이터가 8byte 정수 데이터임을 컴파일러에게 알려주기 위한 목적이다.
+
+    - int 타입의 저장 범위를 넘어서는 큰 정수는 반드시 소문자 'l'이나 대문자 'L'을 붙어야 한다.
+    - 일반적으로 소문자 'l'은 숫자 '1'과 비슷해 혼돈하기 쉬우므로 대문자 'L'을 사용한다.
+
+  <img src="./picture/LongExample.PNG">
+
+
+
+### 2.2.3 실수 타입(float, double)
+
+- **실수 타입 **: 소수점이 있는 실수 데이터를 저장할 수 있는 타입으로, 메모리 사용 크기에  따라 float와 double이 있다.
+
+  | 실수  타입 | float | double |
+  | ---------- | :---: | :----: |
+  | 바이트 수  |   4   |   8    |
+
+  - float와 double의 메모리 사용 크기는 각각 int와 long의 크기와 같지만, 정수 타입과는 다른 저장 방식 때문에 정수 타입보다 월씬 더 큰 범위의 값을 저장할 수 있다.
+  - 실수는 정수와 달리 부동 소수점(floating-point) 방식으로 저장된다.
+
+  <img src="./picture/actual number.PNG">
+
+  - 가수 m은 0<=m<1 범위의 실수 이어야 한다.
+  - float 타입과 double 타입은 가수와 지수를 저장하기 위해 전체 bit를 나누어 사용한다.
+
+  <img src="./picture/actual memory.PNG">
+
+  - 정밀도를 요구하는 계산에서는 double을 사용한다.
+    - 자바는 실수 리터럴의 기본 타입을 double로 간주한다.
+    - 이 말은 실수 리터럴을 float 타입 변수에 그냥 저장할 수 없다는 뜻이다. 실수 리터럴을 float 타입 변수에 저장하려면 리터럴 뒤에 소문자 'f'나 대문자 'F'를 붙여야 한다.
+
+  ```java
+  double var1 = 3.14;
+  float var2 = 3.14;	// 컴파일 에러(Type mismatch: cannot convert from double to float)
+  float var3 = 3.14F;
+  ```
+
+  - 만약 정수 리터럴에 10의 지수를 나타내는 E 또는 e를 포함하고 있으면 정수 타입 변수에 저장할 수 없고 실수 타입 변수에 저장해야 한다.
+
+  ```java
+  int var6 = 3000000;		// 3000000
+  double var7 = 3e6;		// 3000000
+  float var8 = 3e6f;		// 3000000
+  double var9 = 2e-3;		// 0.002
+  ```
+
+  <img src="./picture/FloatDoubleExample.PNG">
+
+  - double 타입이 float 타입의 가수가 약 두 배 정도 크기 때문에 더욱 정밀하게 출력되는 것을 볼 수 있다.
+
+
+
+### 2.2.4 논리 타입(boolean)
+
+- **boolean 타입** : 1byte(8bit)로 표현되는 논리값(true/false)을 저장할 수 있는 데이터 타입이다.
+
+  - boolean 타입은 두 가지 상태값을 저장할 필요성이 있을 경우에 사용되며, 상태값에 따라 조건문과 제어문의 실행 흐름을 변경하는데 주로 이용된다.
+
+  <img src="./picture/BooleanExample.PNG">
+
+
+
+## 2.3 타입 변환
+
+- **타입 변환** : 데이터 타입을 다른 데이터 타입으로 변환하는 것을 말한다.
+  - 타입 변환에는 두 가지 종류가 있다. 하나는 자동(묵시적) 타입 변환이고 다른 하나는 강제(명시적) 타입 변환이다.
+
+
+
+### 2.3.1 자동 타입 변환
+
+- **자동 타입 변환(Promotion)** : 프로그램 실행 도중에 자동적으로 타입 변환이 일어나는 것을 말한다.
+
+  - 자동 타입 변환은 작은 크기를 가지는 타입이 큰 크기를 가지는 타입에 저장될 때 발생한다.
+  - 큰 크기 타입과 작은 크기 타입의 구분은 사용하는 메모리 크기이다.
+
+  <img src="./picture/promotion.PNG">
+
+  ```
+  byte(1) < short(2) < int(4) < long(8) < float(4) < double(8)
+  ```
+
+  - 실수 타입의 변수들이 정수 타입의 변수들보다 크기가 큰 이유는  표현할 수 있는 값의 범위가 더 크기 때문이다.
+
+  ```java
+  byte byteValue = 10;
+  int int Value = (int)byteValue;		// 자동 타입 변환이 일어난다.
+  ```
+
+  <img src="./picture/byte int.PNG">
+
+  - 자동 타입 변환이 발생되면 변환 이전의 값과 변한 이후의 값은 동일하다.
+    - 변환 이전의 값은 변환 이후에도 손실 없이 그대로 보존된다.
+  - 정수 타입이 실수 타입으로 변환하는 것은 무조건 자동 타입 변환이 된다.
+    - 실수 타입으로 변환된 이후의 값은 정수가 아닌 .0이 붙은 실수 값이 된다.
+
+  ```java
+  int intValue = 200;
+  double doubleValue = (double)intValue;		// 200.0
+  ```
+
+  - char 타입의 경우 int 타입으로 자동 변환되면 유니코드 값이 int 타입에 저장된다.
+
+  ```java
+  char charValue = 'A';
+  int intValue = (int)charValue;			// 65
+  ```
+
+  - 자동 타입 변환에서의 예외
+    - char는 2byte의 크기를 가지지만, char의 범위는 0~65535이므로 음수가 저장될 수 없다. 따라서 음수가 저장될 수 있는 byte 타입을 char 타입으로 자동 변환시킬 수 없다.
+
+  ```java
+  byte byteValue = 65;
+  char charValue = byteValue;		(o)	// 컴파일 에러
+  char charData = (char)byteValue	(x)	// 강제 타입 변환
+  ```
+
+  <img src="./picture/PromotionExample.PNG">
+
+
+
+### 2.3.2 강제 타입 변환
+
+- 큰 크기의 타입은 작은 크기의 타입으로 자동 타입 변환을 할 수 없다.
+
+- **강제 타입 변환(캐스팅: Casting)** 강제적으로 큰 데이터 타입을 작은 데이터 타입으로 쪼개어서 저장하는 방법
+
+  - 강제 타입 변환은 캐스팅 연산자 ()를 사용하는데, 괄호 안에 들어가는 타입은 쪼개는 단위이다.
+
+  <img src="./picture/casting.PNG">
+
+  ```java
+  int intValue = 103029770;
+  byte byteValue = (byte)intValue;			//강제 타입 변환(캐스팅)
+  ```
+
+  <img src="./picture/int to byte.PNG">
+
+  - 끝 1byte 1byte만 byte 타입 변수에 담게 되므로 원래 int 값은 보존되지 않는다. 하지만 int 값이 끝 1byte로만 표현이 가능하다면 byte 타입으로 변환해도 같은 값이 유지될 수 있다.
+    - 이럴 경우 강제 변환이 의미 있게 된다.
+
+  <img src="./picture/int to byte_s.PNG">
+
+  ```java
+  long longValue = 300;
+  int intValue = (int)longValue;		//intValue는 300이 그대로 저장된다.
+  ```
+
+  - int 타입은 char 타입으로 자동 변환되지 않기 때문에 강제 타입 변환을 사용해야 한다.
+    - int 타입에 저장된 값이 유니코드 범위(0~65535)라면 (char) 캐스팅 연산자를 사용해서 char 타입으로 변환할 수 있다.
+    - char 타입으로 변환된 값을 출력하면 유니코드에 해당하는 문자가 출력된다.
+
+  ```java
+  int intValue = 'A';
+  char charValue = (char)intValue;
+  System.out.println(charValue);
+  ```
+
+  - 실수 타입(float, double)은 정수 타입(byte, short, int, long)으로 자동 변환되지 않기 때문에 강제 타입 변환을 사용해야 한다.
+    - 이 경우 소수점 이하 부분은 버려지고, 정수 부분만 저장된다.
+
+  ```java
+  double doubleValue = 3.14;
+  int intValue = (int)doubleValue;	// intValue는 정수 부분인 3만 저장된다.
+  ```
+
+  <img src="./picture/CastingExample.PNG">
+
+  - 강제 타입 변환에서 주의할 점은 사용자로부터 입력받은 값을 변환할 때 값의 손실이 발생하면 안된다는  것이다.
+    - 강제 타입 변환을 하기 전에 우선 안전하게 값이 보존될 수 있는지 검사하는 것이 좋다.
+
+  <img src="./picture/CheckValueBeforeCasting.PNG">
+
+  - 자바는 코드에서 데이터 값을 검사하기 위해 boolean과 char 타입을 제외하고 모든 기본 타입에 대해 최대값(max)과 최소값(min)을 상수로 제공하고 있다.
+  - 어떤 정수값과 실수값을 다른 타입으로 변환하고자 할 때는 변환될 타입의 최소값과 최대값을 벗어나는지 반드시 검사하고, 만약 벗어난다면 타입 변환을 하지 말아야 한다.
+
+  | 기본 타입 | 최대값 상수       | 최소값 상수       |
+  | --------- | ----------------- | ----------------- |
+  | byte      | Byte.MAX_VALUE    | Byte.MIN_VALUE    |
+  | short     | Short.MAX_VALUE   | Short.MIN_VALUE   |
+  | int       | Integer.MAX_VALUE | Integer.MIN_VALUE |
+  | long      | Long.MAX_VALUE    | Long.MIN_VALUE    |
+  | float     | Float.MAX_VALUE   | Float.MIN_VALUE   |
+  | double    | Double.MAX_VALUE  | Double.MIN_VALUE  |
+
+  - 강제 타입 변환에서 또 다른 주의할 점은 정수 타입을 실수 타입으로 변환할 때 정밀도 손실을 피해야 한다.
+
+  <img src="./picture/FromIntToFloat.PNG">
+
+  - 다음과 같이 값이 나온 이유는 int 값을 float 타입으로 자동 변환하면서 문제가 발생했기 때문이다.
+
+  ```
+  float: 부호(1비트) + 지수(8비트) + 가수(23비트)
+  ```
+
+  - float 타입은 다음과 같이 비트 수가 할당되어 있다.
+  - int 값을 손실 없이 float 타입의 값으로 변환할 수 있으려면 가수 23비트로 표현 가능한 값이어야 한다.
+    - 123465780은 23비트로 표현할 수 없기 때문에 근사치로 변환된다. 즉 정밀도 손실이 발생한다.
+    - 그렇기 때문에 int 갑을 실수 타입으로 안전하게 변환시키는 double 타입을 사용한다.
+
+  ```
+  double: 부호(1비트) + 지수(11비트) + 가수(52비트)
+  ```
+
+  - int의 크기는 32비트이므로 double의 가수 52비트보다 작기 때문에 어떠한 int 값이라도 안전하게 정밀도 손실 없이 double 타입으로 변환될 수 있다.
+    - double 값을 원래 int 타입으로 변환해도 손실 없이 복원 된다.
+
+  <img src="./picture/FromIntToDouble.PNG">
+
+
+
+### 2.3.3 연산식에서의 자동 타입 변환
+
+- 연산은기본적으로 같은 타입의 피연산자(operand) 간에만 수행되기 때문에 서로 다른 타입의 피연산자가 있을 경우 두 피연산자 중 크기가 큰 타입으로 자동 변환된 후 연산을 수행한다.
+
+  <img src="./picture/promotion operating.PNG">
+
+  - int 타입으로 반드시 연산을 해야 한다면 double 타입을 int 타입으로 강제 변환하고 덧셈 연산을 수행해야 한다.
+
+  ```java
+  int intValue = 10;
+  double doubleValue = 5.5;
+  int result = intValue + (int)doubleValue;		//result에 15가 저장
+  ```
+
+  - 자바는 정수 연산일 경우 int 타입을 기본으로 한다.
+    - 피연산자를 4byte 단위로 저장하기 때문이다.
+    - 크기가  4byte보다 작은 타입(byte, char, short)은 4byte인 int 타입으로 변환된 후 연산이 수행된다.
+    - 따라서 연산의 결과도 int 타입이 된다.
+
+  <img src="./picture/promotion int.PNG">
+
+  - 피연산자 중 하나가 long 타입이라면 다른 피연산자도 long 타입으로 자동 타입 변환되고 연산 결과는 long 타입이 된다.
+
+  <img src="./picture/promotion long.PNG">
+
+  - float 타입과 float 타입을 연산하면 연산의 결과는 float 타입으로 나오지만, 피연산자 중에 실수 리터럴이나 double 타입이 있다면 다른 피연산자도 double 타입으로 자동 타입 변환되어 연산되므로 결과는 double 타입으로 산출된다.
+
+  <img src="./picture/promotion double.PNG">
+
+  <img src="./picture/OperationsPromotionExample.PNG">
+

@@ -276,9 +276,9 @@
   ```
   preorder(x):
   
-  1.	if x!=NULL						// 노드 x가 NULL이면 더 이상 순환 호출을 하지 않는다.
-  2.		then	print DATA(x);		// x의 데이터를 출력한다.	
-  3.				preorder(LEFT(x));	// x의 왼쪽 서브 트리를 순환 호출하여 방문한다.
+  1.	if x!=NULL	// 노드 x가 NULL이면 더 이상 순환 호출을 하지 않는다.
+  2.		then	print DATA(x);	// x의 데이터를 출력한다.	
+  3.				preorder(LEFT(x));// x의 왼쪽 서브 트리를 순환 호출하여 방문한다.
   4.				preorder(RIGHT(x));	// x의 오른쪽 서브 트리를 순환 호출하여 방문한다.
   ```
 
@@ -311,10 +311,10 @@
   ```
   inorder(x):
   
-  1.	if x!=NULL						// 노드 x가 NULL이면 더 이상 순환 호출을 하지 않는다.
-  2.		then	inorder(LEFT(x));	// x의 왼쪽 서브 트리를 순환 호출하여 방문한다.
-  3.				print DATA(x);		// x의 데이터를 출력한다.
-  4.				inorder(RIGHT(x));	// x의 오른쪽 서브 트리를 순환 호출하여 방문한다.
+  1.	if x!=NULL	// 노드 x가 NULL이면 더 이상 순환 호출을 하지 않는다.
+  2.		then	inorder(LEFT(x));// x의 왼쪽 서브 트리를 순환 호출하여 방문한다.
+  3.				print DATA(x);	// x의 데이터를 출력한다.
+  4.				inorder(RIGHT(x));// x의 오른쪽 서브 트리를 순환 호출하여 방문한다.
   ```
 
   <img src="./picture/inorder.PNG">
@@ -338,10 +338,10 @@
   ```
   postorder(x):
   
-  1.	if x!=NULL						// 노드 x가 NULL이면 더 이상 순환 호출을 하지 않는다.
+  1.	if x!=NULL	// 노드 x가 NULL이면 더 이상 순환 호출을 하지 않는다.
   2.		then	postorder(LEFT(x));	// x의 왼쪽 서브 트리를 순환 호출하여 방문한다.
   3.				postorder(RIGHT(x));// x의 오른쪽 서브 트리를 순환 호출하여 방문한다.	
-  4.				print DATA(x);		// x의 데이터를 출력한다.
+  4.				print DATA(x);	// x의 데이터를 출력한다.
   ```
 
   <img src="./picture/postorder.PNG">

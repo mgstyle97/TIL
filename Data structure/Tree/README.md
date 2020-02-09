@@ -389,6 +389,10 @@
 
 
 
+### 전체 프로그램
+
+[이진 트리의 순회](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Tree/tree_traversal.c)
+
 ## 8.5 반복적 순회
 
 - 반복을 이용한 순회에서는 스택을 사용하면 구현할 수 있다.

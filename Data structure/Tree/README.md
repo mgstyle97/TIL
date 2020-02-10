@@ -398,3 +398,5 @@
 - 반복을 이용한 순회에서는 스택을 사용하면 구현할 수 있다.
   - 순환 호출도 사실은 시스템 스텍을 사용하고 있는 것이기 때문에 별도의 스택을 사용하면 순환 호출을 흉내 낼 수 있는 것이다.
   - 실제로 이 방법은 인공지능에서 지능적인 탐색을 할 때 사용된다.
+  
+  [반복적 순회](https://github.com/mgstyle97/TIL/blob/master/Data%20structure/Tree/recursive_traversal.c)

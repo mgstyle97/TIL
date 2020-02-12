@@ -487,3 +487,414 @@
   - 하나의 디렉토리 안에 다른 디렉토리가 있을 수 있으므로 먼저 서브 디렉토리의 용량을 모두 계산한 다음에 루트 디렉토리의 용량을 계산하여야 할 것이다.
     - 따라서 후위 순회를 사용하여야 한다.
     - 후위 순회를 사용하되 순환 호출되는 순회 함수가 용량을 반환하도록 만들어야 한다.
+
+
+
+## 8.9 이진 트리의 추가 연산
+
+### 노드의 개수
+
+- 탐섹 트리안의 노드의 개수를 세어 표시한다.
+
+  - 노드의 개수를 세기 위해서는 트리안의 노드들을 전체적으로 순회하여야 한다.
+  - 각각의 서브 트리에 대하여 순환 호출한 다음, 반환되는 값에 1을 더하여 반환하면 된다.
+  - **노드 개수 알고리즘 유사코드**
+
+  ```
+  get_node_count(x):
+  
+  if x != NULL then
+  	return 1 + get_node_count(x.left) + get_node_count(x.right);
+  ```
+
+  ```c
+  int get_node_count(TreeNode *node)
+  {
+      int count = 0;
+      
+      if(node != NULL){
+          count = 1 + get_node_count(node->left) + get_node_count(node->right);
+      }
+      
+      return count;
+  }
+  ```
+
+
+
+### 단말 노드의 개수 구하기
+
+- 단말 노드의 개수를 세기 위해서는 트리안의 노드들을 전체적으로 순회하여야 한다.
+
+  - 순회하면서 만약 왼쪽 자식과 오른쪽 자식이 동시에 0이 되면 단말 노드이므로 1을 반환한다.
+  - 그렇지 않으면 비단말 노드이므로 각각의 서브 트리에 대하여 순환 호출한 다음, 반환되는 값을 서로 더하면 된다.
+  - **단말 노드 개수 구하는 알고리즘 유사코드**
+
+  ```
+  get_leaf_count(T):
+  
+  if T != NULL then
+  	if T.left == NULL and T.right == NULL
+  		then return 1;
+  		else return get_leaf_count(T.left) + get_leaf_count(T.right);
+  ```
+
+  ```c
+  int get_leaf_count(TreeNode *node)
+  {
+      int count = 0;
+      
+      if(node != NULL){
+          if(node->left == NULL && node->right == NULL)
+              return 1;
+          else
+          	count = get_leaf_count(node->left) + get_leaf_count(node->right);
+      }
+      return count;
+  }
+  ```
+
+
+
+### 높이 구하기
+
+- 트리의 높이를 구하는 알고리즘이 가장 까다롭다.
+
+  - 각 서브 트리에 대하여 순환 호출을 하여야 한다.
+  - 순환 호출을 하여 밥ㄷ은 값을 더하는 것이 아닌 봔환된 값들 중에 가장 최대인 값을 구하여 반환하여야 한다.
+
+  <img src="./picture/tree height.PNG">
+
+  - **트리의 높이 구하는 알고리즘 유사코드**
+
+  ```
+  get_height(T):
+  
+  if T != NULL
+  	return 1 + max(get_height(T.left) + get_height(T.right));
+  ```
+
+  ```c
+  int get_height(TreeNode *node)
+  {
+      int height = 0;
+      if(node != NULL)
+          height = 1 + max(get_height(node->left) + get_height(node->right));
+      return height;
+  }
+  ```
+
+
+
+## 8.10 스레드 이진 트리
+
+- 이진 트리 순회는 순환 호출을 사용한다.
+
+  - 순환 호출은 함수를 호출해야 하므로 상당히 비효율적일 수가 있다.
+  - 이진 트리 순회도 노드의 개수가 많아지고 트리의 높이가 커지게 되면 상당히 비효율적일 수가 있다.
+
+- 트리의 노드 개수가 n개이면 링크의 총 개수는 2n개 이다.
+
+  - 노드와 노드를 연결시키는 링크는 n-1개 이며, 나머지 n+1개의 링크는 NULL이다.
+  - NULL 링크에 중위 순회 시에 선행 노드인 중위 선행자(inoerder predecessor)나 중위 순회시에 후속 노드인 중위 후속자(inorder successor)를 저장시켜 놓은 트리가 **스레드 이진 트리(thread binary tree)**이다.
+  - 스레드(thread), 즉 실을 이용하여 노드들은 순회 순서대로 연결시켜 놓은 트리이다.
+  - NULL 링크에 스레드가 저장되면 링크에 자식을 가리키는 포인터가 저장되어 있는지 아니면 NULL이 저장되어 있는지를 구별해주는 태그 필드가 필요하다.
+
+  ```c
+  typedef struct _TreeNode{
+      int data;
+      struct _TreeNode *left, *right;
+      int is_thread;	// 만약 오른쪽 링크가 스레드이면 TRUE
+  }TreeNode;
+  ```
+
+  - is_thread가 true이면 right는 중위 후속자이고, is_thread가 false이면 오른쪽 자식을 가리키는 포인터가 된다.
+    - is_thread가 true로 되어 있으면 바로 오른쪽 자식이 중위 후속자가 되므로 오른쪽 자식을 반환한다.
+    - 오른쪽 자식이 NULL이면 더 이상 후속자가 없다는 것이므로 NULL을 반환한다.
+    - is_thread가 false이면 서브 트리의 가장 왼쪽 노드로 가야한다.
+
+  ```c
+  TreeNode* find_successor(TreeNode *node)
+  {
+      // p는 node의 오른쪽 포인터
+      TreeNode *p = node->right;
+      // 만약 오른쪽 포인터가 NULL이거나 스레드이면 오른쪽 포인터를 반환
+      if(p == NULL || node->is_thread == TRUE)
+          return p;
+      // 만약 오른쪽 자식이면 다시 가장 왼쪽 노드로 이동
+      while(p->left)
+          p = p->left;
+      return p;
+  }
+  ```
+
+  ```c
+  void thread_inorder(TreeNode *node)
+  {
+      TreeNode *p = node;
+      while(p->left)		// 가장 왼쪽 노드로 간다.
+          p = p->left;
+      do{
+          printf("%c", p->data);	// 데이터 출력
+          p = find_successor(p);	// 후속자 함수 호출
+      }while(p);					// NULL이 아니면
+  }
+  ```
+
+  
+
+## 8.11 이진 탐색 트리
+
+- **이진 탐색 트리(binary search tree)** : 이진 트리 기반의 탐색을 위한 자료 구조이다.
+
+  - **탐색(search)**은 가장 중요한 컴퓨터 응용의 하나이다.
+
+    > - 탐색은 우리 일상생활과 컴퓨터 프로그램에서 많이 사용되며, 가장 시간이 많이 걸리는 작업 중의 하나이므로 담색을 효율적으로 수행하는 것은 무척 중요하다.
+    > - 컴퓨터 프로그램에서 탐색은 레코드(record)의 집합에서 특정한 레코드를 찾아내는 작업을 의미한다.
+    > - 레코드는 하나 이상의 필드(field)로 구성된다.
+    >   - 일반적으로 레코드들의 집합을 테이블(table)이라고 한다.
+    >   - 레코드들은 보통 키(key)라고 불리는 하나의 필드에 의해 식별할 수 있다.
+    >   - 일반적으로 어떤 키는 다른 키와 중복되지 않는 고유한 값을 가지며 이러한 키를 사용하면 각각의 레코드들을 구별할 수 있을 것이다.
+    >     - 이러한 키를 주요키(primary key)라고 부른다.
+    >
+    > 이진 탐색 트리는 이러한 탐색 작업을 효율적으로 하기 위한 자료 구조 이다.
+
+  <img src="./picture/search terms.PNG">
+
+### 이진 탐색 트리의 정의
+
+- **이진 탐색 트리**
+
+  > - 모든 원소의 키는 유일한 키를 가진다.
+  > - 왼쪽 서브 트리 기들은 루트 키보다 작다.
+  > - 오른쪽 서브 트리의 키들은 루트의 키보다 크다.
+  > - 왼쪽과 오른쪽 서브 트리도 이진 탐색 트리이다.
+
+  <img src="./picture/BST.PNG">
+
+  - 찾고자 하는 키값이 이진트리의 루트 노드의 키값과 비교하여 루트 노드보다 작으면 원하는 키값은 왼쪽 서브 트리에 있고, 루트 노드보다 크면 원하는 키값은 오른쪽 서브 트리에 있음을 알 수 있다.
+
+  <img src="./picture/exp bst.PNG">
+
+
+
+### 순환적인 탐색 연산
+
+- 이진 탐색 트리에서 특정한 키값을 가진 노드를 찾기 위해서는 먼저 주어진 탐색키 값과 루트 노드의 키값을 비교한다.
+
+  - 비교한 결과가 같으면 탐색이 성공적으로 끝난다.
+  - 비교한 결과가, 주어진 키 값이 루트 노드의 키값보다 작으면 탐색은 이 루트 노드의 왼쪽 자식을 기준으로 다시 시작한다.
+  - 비교한 결과가, 주어진 키 값이 루트 노드의 키값보다 크면 탐색은 이 루트 노드의 오른쪽 자식을 기준으로 다시 시작한다.
+  - **BST 탐색 알고리즘 유사코드(순환적)**
+
+  ```
+  search(root, key):
+  
+  if root == NULL
+  	then return NULL;
+  if key == KEY(root)
+  	then return root;
+  	else if key < KEY(root)
+  		then return search(LEFT(root), key);
+  		else return search(RIGHT(root), key);
+  ```
+
+  <img src="./picture/search operator.PNG">
+
+  ```C
+  TreeNode* search(TreeNode *root, int key)
+  {
+      if(node == NULL)
+          return NULL;
+      if(key == root->data)
+          return root;
+      else if(key < root->data)
+          return search(root->left, key);
+      else
+          return search(root->right, key);
+  }
+  ```
+
+
+
+### 반복적인 탐색 연산
+
+- 효율적인 측면에서 반복적인 연산이 순환적인 연산보다 훨씬 우수하다.
+
+  ```c
+  TreeNode* search(TreeNode *root, int key)
+  {
+      TreeNode *node = root;
+      while(node != NULL){
+          if(key == node->data)
+              return node;
+      	else if(key < node->data)
+              node = node->left;
+      	else
+              node = node->right;
+      }
+      return NULL;
+  }
+  ```
+
+
+
+### 이진 탐색 트리에서 삽입 연산
+
+- 이진 트리에서 원소를 삽입하기 위해서는 먼저 탐색을 수행하는 것이 필요하다.
+
+  - 이진 탐색 트리에서는 같은 키값을 갖는 노드가 없어야 하기 때문이고 탐색에 실패한 위치가 바로 새로운 노드를 삽입하는 위치가 되기 때문이다.
+
+  <img src="./picture/insert operator.PNG">
+
+  - 새로운 노드는 항상 단말 노드에 추가된다.
+  - 단말 노드를 발견할 때까지 루트에서 키를 검색하기 시작한다. 단말 노드가 발견되면 새로운 노드가 단말 노드의 하위 노드로 추가된다.
+  - **이진 탐색 트리 삽입 연산 알고리즘 유사코드**
+
+  ```
+  insert(root, n):
+  
+  if KEY(n) == KEY(root)
+  	then return;
+  else if KEY(n) < KEY(root) then
+  	if LEFT(root) == NULL
+  		then LEFT(root) <- n;
+  		else insert(LEFT(root), n);
+  else
+  	if RIGHT(root) == NULL
+  		then RIGHT(root) <- n;
+  		else insert(RIGHT(root), n);
+  ```
+
+  ```c
+  TreeNode* insert(TreeNode *root, int key)
+  {
+      TreeNode *node = root;
+      // 트리가 공백이면 새로운 노드를 반환한다.
+      if(node == NULL)
+          return new_node(key);
+      // 그렇지 않으면 순환적으로 트리를 내려간다.
+      if(key < node->data)
+          node->left = insert(node->left, key);
+      else if(key > node->data)
+          node->right = insert(node->right, key);
+      
+      // 변경된 루트 포인터를 반환한다.
+      return node;
+          
+  }
+  ```
+
+
+
+### 이진 탐색 트리에서 삭제 연산
+
+- 노드를 삭제하는 것은 이진 탐색 트리에서 가장 복잡한 연산이다.
+
+  - 노드를 삭제하기 위해서 트리를 탐색하여야 한다는 것은 삽입과 마찬가지이다.
+  - 삭제하려고 하는 키값이 트리 안에 어디 있는지를 알아야 한다.
+
+  1. 삭제하려는 노드가 단말 노드일 경우
+  2. 삭제하려는 노드가 하나의 왼쪽이나 오른쪽 서브 트리중 하나만 가지고 있는 경우
+  3. 삭제하려는 노드가 두 개의 서브 트리 모두 가지고 있는 경우
+
+
+
+#### 첫 번째 경우 : 삭제하려는 노드가 단말 노드일 경우
+
+- 삭제할 노드가 단말 노드일 경우 노드 아래에 더 이상 노드가 없으므로 가장 쉽게 삭제할 수 있다.
+
+  - 단말 노드를 삭제한다는 것은 단말 노드의 부모 노드를 찾아서 부모 노드 안에 링크 필드를 NULL로 만들어서 연결을 끊으면 된다.
+
+  <img src="./picture/leaf delete.PNG">
+
+
+
+#### 두 번째 경우 : 삭제하려는 노드가 하나의 서브 트리만 가지고 있는 경우
+
+- 삭제되는 노드가 왼쪽이나 오른족 서브 트리중 하나만 가지고 있는 경우에는 자기 노드는 삭제하고 서브 트리는 자기 노드의 부모 노드에 붙여주면 된다.
+
+  <img src="./picture/one sub delete.PNG">
+
+
+
+#### 세 번째 경우 : 삭제하려는 노드가 두 개의 서브 트리를 가지고 있는 경우
+
+- 가장 중요한 문제는 서브 트리에 있는 어떤 노드를 삭제 노드 위치로 가져올 것인가 이다.
+
+  - 삭제하려는 노드의 자식 노드를 그대로 가져오게 되면 이진 탐색 트리에 맞지 않는 트리가 된다.
+    - 그렇기 때문에 삭제하려는 노드와 가장 비슷한 값을 가지는 노드로 대체하여야 한다. 따라서 가장 적합한 노드는 왼쪽 서브 트리에서 가장 큰 값이거나 오른쪽 서브 트리에서 가장 작은 값으로 대체하여야 한다.
+    - 이들 노드는 이진 탐색 트리를 중위 순회하였을 경우, 각각 선행 노드와 후속 노드에 해당한다.
+
+  <img src="./picture/successor node.PNG">
+
+  <img src="./picture/example delete.PNG">
+
+<img src="./picture/teo sub delete.PNG">
+
+```C
+// 이진 탐색 트리와 키가 주어지면 키가 저장된 노드를 삭제하고
+// 새로운 루트 노드를 반환한다.
+TreeNode* delete_node(TreeNode *root, int key)
+{
+    if(root == NULL)
+        return root;
+    // 만약 키가 루트보다 작으면 왼쪽 서브 트리에 있는 것임
+	if(key < root->data)
+        root->left = delete_node(root->left, key);
+    // 만약 키가 루트보다 크면 오른쪽 서브 트리에 있는 것임
+    else if(key > root->data)
+        root->right = delete_node(root->right, key);
+    // 키가 루트와 같으면 이 노드를 삭제하면 된다.
+    else{
+        // 첫 번째나 두 번째의 경우
+        if(root->left == NULL){
+            TreeNode *tmep = root->right;
+            free(root);
+            return temp;
+        }
+        else if(root->right == NULL){
+            TreeNode *temp = root->left;
+            free(root);
+            return temp;
+        }
+        // 세 번째 경우
+        TreeNode *temp = min_value_node(root->right);
+        // 중위 순회시 후계 노드를 복사한다.
+        root->data = temp->data;
+        // 중위 순회시 후계 노드를 삭제한다.
+        root->right = delete_node(root->right, temp->data);
+    }
+    return root;
+}
+```
+
+```c
+TreeNode* min_value_node(TreeNode *node)
+{
+    TreeNode *current = node;
+    
+    while(current->left)
+        current = current->left;
+    
+    return current;
+}
+```
+
+
+
+### 이진 탐색 트리의 분석
+
+- 이진 탐색 트리에서의 탐색, 삽입, 삭제 연산의 시간 복잡도는 트리의 높이를 h라고 했을 때 O(h)가 된다.
+
+  - n개의 노드를 가지는 이진 탐색 트리의 경우, 일반적인 이진 트리의 높이는 [log<sub>2</sub>n]이므로 이진 탐색 트리 연산의 평균적인 경우의 시간 복잠도는 O(log<sub>2</sub>n)이다.
+
+  <img src="./picture/Time complexity.PNG">
+
+  - 그러나 이는 좌우의 서브 트리가 균형을 이룰 경우이고 최악의 경우에는 한쪽으로 치우치는 경사 트리가 되어서 트리의 높이가 n이 된다. 이 경우에는 탐색, 삭제, 삽입 시간이 거의 선형 탑색과 같이 O(n)이 된다.
+
+  <img src="./picture/Slanted Binary Tree.PNG">
+
+  - 선형 탐색에 비하여 전혀 시간적으로 이득이 없다.
+    - 이러한 최악의 경우를 방지하기 위하여 트리의 높이를 [log<sub>2</sub>n]으로 한정시키는 균형 기법이 필요하다.
+    - 트리를 균형지게 만드는 기법으로 AVI 트리를 비롯한 여러 기법들이 개발되었다. 

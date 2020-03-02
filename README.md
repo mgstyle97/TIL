@@ -9,12 +9,12 @@
 ## Contents
 
 - **자료구조**
-  - [스택](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Stack)
-  - [큐](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Queue)
-  - [연결 리스트](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Linked_list)
-  - [연결 리스트 2](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Linked_list%202)
-  - [트리](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Tree)
-  - [우선순위 큐](https://github.com/mgstyle97/TIL/tree/master/Data%20structure/Priority%20queue)
+  - [스택](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Stack)
+  - [큐](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Queue)
+  - [연결 리스트](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Linked_list)
+  - [연결 리스트 2](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Linked_list_2)
+  - [트리](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Tree)
+  - [우선순위 큐](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Priority_queue)
   - [그래프 1](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Graph%201)
   
 - 자바

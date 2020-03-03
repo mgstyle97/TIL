@@ -265,13 +265,15 @@ typedef struct _GraphType{
 - 깊이 우선 탐색을 구현하는 데는 2가지 방법이 있는데, 순환 호출을 이용하는 것과 명시적인 스택을 사용하여 인접한 정점들을 스택에 저장하였다가 다시 꺼내어 작업하는 방법이다.
 - 순환 호출을 이용하는 방법은 방문 여부를 기록하여야 한다.
 
+[DFS_Adjacency_Matrix](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/DFS_mat.c)
+
 ### 깊이 우선 탐색의 구현(인접 리스트)
 
 - 인접 리스트는 다수의 연결 리스트로 구성되는데, 각 연결 리스트의 노드는 데이터 필드와 링크 필드로 이루어진다.
   - 데이터 필드에는 인접 정점의 번호가 저장되고 링크 필드에는 다음 인접 정점을 가리키는 포인터가 저장된다.
   - 인접 리스트 역시 방문 여부를 기록하여야 한다.
 
-
+[DFS_Adjacency_List](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/DFS_list.c)
 
 ### 깊이 우선 탐색의 분석
 
@@ -323,9 +325,11 @@ typedef struct _GraphType{
 
 - 너비 우선 탐색은 큐를 사용해야 하므로 깊이 우선 탐색보다 코드가 약간 복잡해진다.
 
+[BFS_Adjacency_Matrix](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/BFS_mat.c)
+
 ### 너비 우선 탐색의 구현(인접 리스트)
 
-
+[BFS_Adjacency_List](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/BFS_list.c)
 
 ### 너비 우선 탐색의 분석
 

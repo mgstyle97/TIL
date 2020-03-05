@@ -558,7 +558,7 @@
   - 끝 1byte만 byte 타입 변수에 담게 되므로 원래 int 값은 보존되지 않는다. 하지만 int 값이 끝 1byte로만 표현이 가능하다면 byte 타입으로 변환해도 같은 값이 유지될 수 있다.
     - 이럴 경우 강제 변환이 의미 있게 된다.
 
-  <img src="./picture/int to byte_s.PNG">
+  <img src="./picture/int to byte_s.png">
 
   ```java
   long longValue = 300;

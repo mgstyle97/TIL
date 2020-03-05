@@ -15,7 +15,7 @@
   - [연결 리스트 2](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Linked_list_2)
   - [트리](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Tree)
   - [우선순위 큐](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Priority_queue)
-  - [그래프 1](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Graph%201)
+  - [그래프 1](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Graph_1)
   
 - 자바
   - [1. 자바 시작하기](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_1)

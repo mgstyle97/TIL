@@ -409,3 +409,124 @@
     - 이 메소드들은 double 타입의 값을 매개값으로 받아서 이 값이 Infinity 또는 NaN이라면 true를 리턴하고, 그렇지 않다면 false를 리턴한다.
 
   <img src="./picture/InfinityAndNaNCheckExample.PNG">
+
+#### 입력값의 NaN 검사
+
+- 부동소수점(실수)을 입력받을 때는 반드시 NaN 검사를 해야한다.
+
+  <img src="./picture/InputDataCheckNaNExample1.PNG">
+
+  - "NaN" 문자열은 Double.valueOf() 메소드에 의해 double 타입으로 변환되면서 NaN이 된다.
+    - 따라서 val 변수에는 NaN이 저장된다. 문제는 NaN은 산술 연산이 가능하다는 점이다.
+    - NaN과 어떠한 수가 연산되면 결과는 NaN이 산출되며 데이터가 엉망이 된다.
+    - 그렇기 때문에 사용가로부터 문자열을 입력받을 때는 반드시 "NaN" 인지를 조사하고 만약 "NaN"이라면 NaN과 산술 연산을 수행해서는 안 된다.
+
+  <img src="./picture/InputDataCheckNaNExample2.PNG">
+
+  - if 조건식에는 Double.isNaN() 메소드를 이용해서 변수의 값이 NaN인지를 검사한다.
+    - 주의할 점은 NaN인지를 조사할 때 **==**연산자를 사용하면 안 된다.
+    - NaN은 **!=** 연산자를 제외한 모든 비교 연산자를 사용할 경우 false 값을 리턴하기 때문이다.
+    - 그렇기 때문에 NaN인지를 검사할 때는 반드시 Double.isNaN() 메소드를 사용하여야 한다.
+
+
+
+### 3.4.2 문자열 연결 연산자
+
+- 문자열 연결 연사자인 +는 문자열을 서로 결합하는 연산자이다.
+
+  - +연산자는 산술 연산자, 부호 연산자인 동시에 문자열 연결 연산자이기도 하다.
+  - 피연산자 중 한쪽이 문자열이면 + 연산자는 문자열 연결 연산자로 사용되어 다른 피연산자를 문자열로 변환하고 서로 결합한다.
+
+  ```java
+  String str1 = "JDK" + 6.0;		// "JDK6.0"
+  String str2 = str1 + " 특징";		// "JDK6.0 특징"	
+  ```
+
+  - 종종 + 연산자가 산술 연산자인지 문자열 연결 연산자인지 판단하기 어려운 경우가 있다.
+
+  ```java
+  "JDK" + 3 + 3.0;
+  ```
+
+  - 문자열과 숫자가 혼합된 + 연산식은 왼쪽에서부터 오른쪽으로 연산이 진행된다.
+    - 따라서 "JDK" + 3이 먼저 연산되어 "JDK3"이라는 문자열이 되고, 이것을 다시 3.0과 연산하여 "JDK33.0"이라는 문자열 결과가 나온다.
+
+  ```JAVA
+  3 + 3.0 + "JDK";
+  ```
+
+  - 다음의 문자열의 경우 3 + 3.0이 먼저 연산되어 6.0이라는 실수값이 되고 이것을 "JDK"와 연산하여 "6.0JDK"라는 결과가 나온다.
+  - 어떤 것이 먼저 연산되느냐에 따라 다른 결과가 나오므로 주의할 필요가 있다.
+
+  <img src="./picture/StringConcatExample.PNG">
+
+
+
+### 3.4.3 비교 연산자(<, <=, >, >=, ==, !=)
+
+- 비교 연산자는 대소(<, <=, >, >=) 또는 동등(==, !=)을 비교해서 boolean 타입인 true/false를 산출한다.
+
+  - 대소 연산자는 boolean 타입을 제외한 기본 타입에 사용할 수 있고, 동등 연산자는 모든 타입에 사용될 수 있다.
+  - 비교 연산자는 흐름 제어문인 조건문(if), 반복문(for, while)에서 주로 이용되어 실행 흐름을 제어할 때 사용된다.
+
+  <img src="./picture/ComparisonOperatorTable.PNG">
+
+  - 만약 피연산자가 char 타입이면 유니코드 값으로 비교 연산을 수향한다.
+
+  ```
+  ('A' < 'B')  ->  (65 < 66)
+  ```
+
+  <img src="./picture/CompareOperatorExample1.PNG">
+
+  - 비교 연산자에서도 연산을 수행하기 전에 타입 변환을 통해 피연산자의 타입을 일치시킨다.
+
+    ```
+    'A' == 65 -> 65 == 65 (true)	// char 타입보다 큰 int 타입으로 변환
+    3 == 3.0 -> 3.0 == 3.0 (true)	// int 타입보다 큰 double 타입으로 변환
+    ```
+
+  - 한 가지 예외는 0.1 == 0.1f와 같은 경우 정상적이라면 0.1f가 좌측 피연산자의 타입인 double로 변환 되어 0.1 == 0.1이 되고 true가 산출되어야 하지만, 이 결과값은 false가 산출된다.
+
+    - 그 이유는 이진 포맷의 가수를 사용하는 모든 부동소수점 타입은 0.1을 정확히 표현할 수가 없어서 0.1f는 0.1의 근사값으로 표현되어 정확한 0.1값을 가지지 않는다.
+    - 이에 따른 해결책은 피연산자를 모두 float 타입으로 강제 타입 변환한 후에 비교 연산을 하는 방법과 정수로 변환해서 비교하는 방법이 있다.
+
+  <img src="./picture/CompareOperatorExample2.PNG">
+
+  - String 타입의 문자열을 비교할 때에는 대소(<, <=, >, >=) 연산자를 사용할 수 없고, 동등(==, !=) 비교 연산자는 사용할 수 있으나 문자열이 같은지, 다른지를 비교하는 용도로는 사용되지 않는다.
+
+    - 기본 타입(byte, char, short, int, long, float, double)인 변수의 값을 비교할 때는 == 연산자를 사용하지만 참조 타입인 String 변수를 비료할 때 == 연산자를 사용하면 원하지 않는 결과가 나올 수도 있다.
+
+    ```java
+    String strVar1 = "신용권";
+    String strVar2 = "신용권";
+    String strVar3 = new String("신용권");
+    ```
+
+  - 자바는 문자열 리터럴이 동일하다면 동일한 String 객체를 참조하도록 되어 있다. 
+    - 그래서 변수 strVar1과 strVar2는 동일한 String 객체의 번지값을 가지고 있다.
+    - 그러나 변수 strVar3은 객체 생성 연산자인 new로 생성한 새로운 String  객체의 번지값을 가지고 있다.
+
+  <img src="./picture/StringAddress.PNG">
+
+  ```
+  strVar1 == strVar2 -> true
+  strVar2 == strVar3 -> false
+  ```
+
+  - 동일한 String 객체이건 다른 String 객체이건 상관없이 String 객체의 문자열만을 비교하고 싶다면 == 연산자 대신에 equals() 메소드를 사용해야 한다.
+    - equals() 메소드는 원본 문자열과 매개값으로 주어진 비교 문자열이 동일한지 비교한 후 true 또는 false를 리턴한다.
+
+  ```java
+  boolean result = str1.equals(str2);
+  // str1은 원본 문자열 str2는 비교 문자열
+  ```
+
+  ```
+  strVar1.equals(strVar2) -> true
+  strVar2.equals(strVar3) -> true
+  ```
+
+  <img src="./picture/StringEqualExample.PNG">
+
+  

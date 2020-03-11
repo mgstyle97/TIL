@@ -530,3 +530,95 @@
   <img src="./picture/StringEqualExample.PNG">
 
   
+
+### 3.4.5 비트 연산자(&, |. ^, ~, <<, >>, >>>)
+
+- 비트 연산자는 데이터를 비트(bit) 단위로 연산한다.
+  - 즉 0과 1이 피연산자가 된다. 그렇기 때문에 0과 1로 표현이 가능한 정수 타입만 비트 연산을 할 수 있다.
+    - 실수 타입인 float와 double은 비트 연산을 할 수 없다.
+  - 비트 연산자는 기능에 따라 **비트 논리 연산자(&,  |, ^, ~)**와 **비트 이동 연산자(<<, >>, >>>)**로 구분한다.
+    - 일반 논리 연산자가 true와 false를 연산한다면 비트 논리 연산자는 0과 1을 연산한다.
+    - 비트 이동 연산자는 비트를 좌측 또는 우측으로 이동하는 연산자이다.
+
+#### 비트 논리 연산자(&, |, ^)
+
+- 비트 논리 연산자에는 &, |, ^, ~가 있다.
+
+  - &, |, ^ 연산자는 피연산자가 boolean 타입일 경우에는 일반 논리 연산자이고, 피연산자가 정수 타입일 경우에는 비트 논리 연산자로 사용된다.
+
+  <img src="./picture/BitLogicOperator.PNG">
+
+  - 비트 연산자는 피연산자를 int 타입으로 자동 타입 변환한 후 연산을 수행한다.
+    - 그렇기 때문에 byte, short, char 타입을 비트 논리 연산하면 그 결과는 int 타입이 된다.
+
+  ```java
+  byte num1 = 45;
+  byte num2 = 25;
+  byte result = num1 & num2;	// 컴파일 에러	=>	int result = num1 & num2;
+  ```
+
+  <img src="./picture/LogicSumOperator.PNG">
+
+<img src="./picture/BitLogicExample.PNG">
+
+#### 비트 이동 연산자(>>, <<, >>>)
+
+- 비트 이동(shift) 연산자는 정수 데이터의 비트를 좌측 또는 우측으로 밀어서 이동시키는 연산을 수행한다.
+
+  <img src="./picture/BitShiftOperator.PNG">
+
+  ```java
+  int result = 1 << 3;
+  ```
+
+  <img src="./picture/LeftShiftOperator.PNG">
+
+  - 32비트 전체를 왼쪽으로 3비트 이동할 때 왼쪽 3비트는 밀려서 버려지고, 맨 오른쪽에 새로 생기는 3비트는 0으로 채우면 2<sup>3</sup>값을 얻게 된다. 따라서 result 변수에는 8이 저장된다.
+
+  ```java
+  int result = -8 >> 3;
+  ```
+
+  <img src="./picture/RightShiftOperator.PNG">
+  - 32비트 전체를 오른쪽으로 이동할 때 맨 오른쪽 3비트는 밀려서 버려지고, 맨 왼쪽에 새로 생긴 3비트는 최상위 부호 비트(MSB)와 동일한 값으로 채워진다.
+    - 32비트가 모두 1이면 정수 -1이므로 변수 result에는 -1이 저장된다.
+
+  ```java
+  int result = -8 >>> 3;
+  ```
+
+  <img src="./picture/TripleOperator.PNG">
+
+  - 32비트 전체를 오른쪽으로 3비트 이동할 때 맨 오른쪽 3비트는 밀려서 버려지고, 맨 왼쪽에 새로 생긴 3비트는 무조건 0으로 채워진다.
+
+  <img src="./picture/BitShiftExample.PNG">
+
+#### 대입 연산자(=, +=, -=, *=, /=, %=, &=, ^=, |=, <<=, >>=, >>>=)
+
+- 대입 연산자는 오른쪽 피연산자의 값을 좌측 피연산자인 변수에 저장한다.
+
+  - 오른쪽 피연산자는 리터럴 및 변수, 그리고 다른 연산식이 올 수 있다.
+  - 단순히 오른쪽 피연산자의 값을 변수에 저장하는 단순 대입 연산자가 있고, 정해진 연산을 수행한 후 결과를 변수에 저장하는 복합 대입 연산자도 있다.
+
+  <img src="./picture/AssignmentOperator.PNG">
+
+  - 대입 연산자는 모든 연산자들 중에서 가장 낮은 연산 순위를 가지고 있기 때문에 제일 마지막에 수행된다.
+
+    - 연산의 진행 방향은 오른쪽에서 왼쪽이다.
+
+    <img src="./picture/OperatorOrder.PNG">
+
+  <img src="./picture/AssignmentOperatorExample.PNG">
+
+## 3.5 삼항 연산자
+
+- 삼항 연산자(?:)는 세 개의 피연산자를 필요로 하는 연산자를 말한다.
+
+  - 삼항 연산자는 ? 앞의 조건식에 따라 콜론(:) 앞뒤의 피연산자가 선택된다고 해서 조건 연산식이라고 부르기도 한다.
+
+  <img src="./picture/ConditionalOperator.PNG">
+
+  - 조건식을 연산하여 true가 나오면 삼항 연산자의 결과는 피연산자2가 된다. 반면에 조건식을 연산하여 false가 나오면 삼항 연산자의 결과는 피연산자3이 된다.
+  - 피연산자2와 피연산자3에는 주로 값이 오지만, 경우에 따라서는 연산식이 올 수도 있다.
+
+  <img src="./picture/ConditionalOperatorExample.PNG">

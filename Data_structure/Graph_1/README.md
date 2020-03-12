@@ -128,17 +128,15 @@
 - 객체: 정점의 집합과 간선의 집합
 - 연산:
 create_graph()		::= 그래프를 생성한다.
-init(g)				::= 그래프 g를 초기화한다.
+init(g)			::= 그래프 g를 초기화한다.
 insert_vertex(g, v)	::= 그래프 g에 정점 v를 삽입한다.
-insert_edge(g, u, v)::= 그래프 g에 간선(u, v)를 삽입한다.
+insert_edge(g, u, v)	::= 그래프 g에 간선(u, v)를 삽입한다.
 delete_vertex(g, v)	::= 그래프 g의 정점 v를 삭제한다.
-delete_edge(g, u, v)::= 그래프 g의 간선(u, v)를 삭제한다.
-is_empty(g)			::= 그래프 g가 공백 상태인지 확인한다.
-adjacent(v)			::= 정점 v가 인접한 정점들의 리스트를 반환한다.
+delete_edge(g, u, v)	::= 그래프 g의 간선(u, v)를 삭제한다.
+is_empty(g)		::= 그래프 g가 공백 상태인지 확인한다.
+adjacent(v)		::= 정점 v가 인접한 정점들의 리스트를 반환한다.
 destroy_graph(g)	::= 그래프 g를 제거한다.
 ```
-
-
 
 ## 10.3 그래프의 표현 방법
 
@@ -151,7 +149,7 @@ destroy_graph(g)	::= 그래프 g를 제거한다.
 
   ```
   if(간선 (i, j)가 그래프에 존재)	M[i][j] = 1,
-  otherwise					 M[i][j] = 0.
+  otherwise				M[i][j] = 0.
   ```
 
   - 그래프에서 자체 간선을 허용하지 않는다면 인접 행렬의 대각선 성분은 모두 0으로 표시된다. 따라서 무방향 그래프의 경우 대칭 행렬이 된다.
@@ -187,9 +185,14 @@ typedef struct _GraphType{
 ```
 
 - 이런 식으로 구현하면 한정된 개수의 정점까지만 그래프에 삽입할 수 있다.
+  
   - 만약 동적 배열로 구현한다면 사용자가 정점을 삽입할 때마다 다시 크기를 조정할 수 있을 것이다.
+  
 - 정점을 삽입하는 연산은 n을 하나 증가하면 된다.
+
 - 간선을 삽입하는 연산은 adj_mat 행렬에서 start행과 end열 그리고 end행과 start열에 1을 삽입하면 된다.
+
+  [adjacency_matrix](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_1/src/adj_mat.c)
 
 ### 인접 리스트
 
@@ -210,7 +213,7 @@ typedef struct _GraphType{
 
 ### 인접 리스트를 이용한 그래프 추상 데이터 타입의 구현
 
-
+​	[adjacency_list](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_1/src/adj_list.c)
 
 ## 10.4 그래프의 탐색
 
@@ -265,7 +268,7 @@ typedef struct _GraphType{
 - 깊이 우선 탐색을 구현하는 데는 2가지 방법이 있는데, 순환 호출을 이용하는 것과 명시적인 스택을 사용하여 인접한 정점들을 스택에 저장하였다가 다시 꺼내어 작업하는 방법이다.
 - 순환 호출을 이용하는 방법은 방문 여부를 기록하여야 한다.
 
-[DFS_Adjacency_Matrix](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/DFS_mat.c)
+[DFS_Adjacency_Matrix](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_1/src/DFS_mat.c)
 
 ### 깊이 우선 탐색의 구현(인접 리스트)
 
@@ -273,7 +276,7 @@ typedef struct _GraphType{
   - 데이터 필드에는 인접 정점의 번호가 저장되고 링크 필드에는 다음 인접 정점을 가리키는 포인터가 저장된다.
   - 인접 리스트 역시 방문 여부를 기록하여야 한다.
 
-[DFS_Adjacency_List](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/DFS_list.c)
+[DFS_Adjacency_List](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_1/src/DFS_list.c)
 
 ### 깊이 우선 탐색의 분석
 
@@ -325,11 +328,11 @@ typedef struct _GraphType{
 
 - 너비 우선 탐색은 큐를 사용해야 하므로 깊이 우선 탐색보다 코드가 약간 복잡해진다.
 
-[BFS_Adjacency_Matrix](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/BFS_mat.c)
+[BFS_Adjacency_Matrix](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_1/src/BFS_mat.c)
 
 ### 너비 우선 탐색의 구현(인접 리스트)
 
-[BFS_Adjacency_List](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph%201/src/BFS_list.c)
+[BFS_Adjacency_List](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_1/src/BFS_list.c)
 
 ### 너비 우선 탐색의 분석
 

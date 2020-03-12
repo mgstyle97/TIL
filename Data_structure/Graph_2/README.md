@@ -171,7 +171,7 @@
 - union-find 알고리즘을 이용하면 Kruskal의 알고리즘의 시간 복잡도는 간선들을 정렬하는 시간에 좌우된다.
   - 효율적인 정렬 알고리즘을 사용한다면 Kruskal의 알고리즘의 시간 복잡도는 (|e|log<sub>2</sub>|e|)이다.
 
-
+[Kruskal](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_2/src/kruskal.c)
 
 ## 11.3 Prim의 MST 알고리즘
 
@@ -212,6 +212,8 @@
 
 - Prim의 알고리즘은 주 반복문이 정점의 수 n만큼 반복하고, 내부 반복문이 n번 반복하므로 Prim의 알고리즘은 O(n<sup>2</sup>)의 복잡도를 그린다.
 - Kruskal의 알고리즘은 복잡도가 O(elog<sub>2</sub>e)이므로 희소 그래프를 대상으로 할 경우에는 Kruskal의 알고리즘이 적합하고, 밀집 그래프의 경우에는 Prim의 알고리즘이 유리하다고 할 수 있다.
+
+[Prim](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_2/src/prim.c)
 
 
 
@@ -314,6 +316,8 @@
 
 - 네트워크에 n개의 정점이 있다면, 최단 경로 알고리즘은 주 반복문을 n번 반복하고 내부 반복문을 2n번 반복하므로 O(n<sup>2</sup>)의 복잡도를 가진다.
 
+[Dijkstra](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_2/src/Dijkstra.c)
+
 ## 11.6 Floyd의 최단 경로 알고리즘
 
 - Floyd의 최단 경로 알고리즘은 그래프에 존재하는 모든 정점 사이의 최단 경로를 한 번에 모두 찾아주는 알고리즘이다.
@@ -387,6 +391,8 @@
 - 힌 번에 모든 정점 간의 최단 경로를 구하는 Floyd의 알고리즘은 3중 반복문이 실행 되므로 시간 복잡도가 O(n<sup>3</sup>)으로 표현되고, 이는 Dijkstra의 알고리즘과 비교해 차이는 없다고 볼 수 있다.
   - 그러나 Floyd의 알고리즘은 매우 간결한 반복 구문을 사용하므로 Dijkstra의 알고리즘보다 상당히 빨리 모든 정점 간의 최단 경로를 찾을 수 있다.
 
+[Floyd](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_2/src/Floyd.c)
+
 ## 11.7 위상 정렬
 
 - 큰 프로젝트는 많은 작업들을 작은 작업으로 나누어 순차적인 처리방식으로 작업을 처리한다.이 경우 전체 프로젝트는 각각의 작업이 완료되어야만 끝나게 된다.
@@ -435,3 +441,6 @@
     - 그런 다음 진입 차수가 0인 정점이 있다면 스택에 저장해서 위의 과정을 반복하여 전체 정점이 출력이 될 때까지 계속된다.
 
   - 만약 전체 정점이 출력되지 못한다면 그래프에 사이클 등이 존재하여 위상 정렬 순서가 존재하지 않는 것이다.
+
+[Topological_sort](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Graph_2/src/Topologocal_sort.c)
+

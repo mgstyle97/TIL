@@ -1,25 +1,25 @@
-# 8. 트리
+# picture8. 트리
 
 ## 8.1 트리의 개념
 
 - **선형 자료 구조(linear data structure)** : 자료들이 선형으로 나열되어 있는 구조를 의미한다.
 
-  <img src="./8. 트리/linear data structure.PNG">
+  <img src="./picture/linear data structure.PNG">
 
 - **트리(tree)** : 계층적인 자료를 표현하는데 적합한 자료구조이다.
   
-  <img src="./8. 트리/example.PNG">
+  <img src="./picture/example.PNG">
   
   - 이러한 구조를 트리라고 부르는 이유는 마치 실제 트리를 거꾸로 엎어놓은 것 같은 모양을 하고 있기 때문이다.
   - 또한 인공 지능 문제에서도 트리가 사용된다.
     - 대표적인 것이 **결정 트리(decision tree)**이다.
     - 결정 트리는 인간의 의사 결정 구조를 표현하는 한 가지 방법이다.
   
-  <img src="./8. 트리/decision tree.PNG">
+  <img src="./picture/decision tree.PNG">
 
 ### 트리의 용어들
 
-<img src="./8. 트리/structure of tree.PNG">
+<img src="./picture/structure of tree.PNG">
 
 - 트리의 구성 요소에 해당하는 A, B, C, D, E, F, G, H, I, J를 노드(node)라 한다.
 
@@ -33,7 +33,7 @@
 
 - 노드들 간에는 부모 관계, 형제 관계, 조상과 자손 관계가 존재한다. 이들은 모두 인간의 관계와 동일하다.
 
-  <img src="./8. 트리/relation of node.PNG">
+  <img src="./picture/relation of node.PNG">
 
   - A는 B의 **부모 노드(parent node)**가 된다.
   - 반대로 B는 A의 **자식 노드(children node)**가 된다.
@@ -42,14 +42,14 @@
   - **후손 노드(descendent node)**는 임의의 노드 하위에 연결된 모든 노드들을 의미한다. 즉 어떤 노드의 서브 트리에 속하는 모든 노드들은 후속 노드이다.
   - 자식 노드가 없는 노드를 **단말 노드(terminal node, 또는 leaf node)**라고 한다. 그 반대는 **비단말 노드(nonterminal node)**이다.
 
-  <img src="./8. 트리/degree of node.PNG">
+  <img src="./picture/degree of node.PNG">
 
   - **노드의 차수(degree)**는 어떤 노드가 가지고 있는 자식 노드의 개수를 의미한다.
     - 루트 노드 A의 경우 자식 노드가 3개이기 때문에 차수도 3이 된다.
     - 단말 노드는 차수가 0인 노드이다.
   - 트리의 차수는 트리가 가지고 있는 노드의 차수 중에서 가장 큰 값이다.
 
-  <img src="./8. 트리/level of tree.PNG">
+  <img src="./picture/level of tree.PNG">
 
   - 트리에서의 **레벨(level)**은 트리의 각 층에 번호를 매기는 것으로서 정의에 의하여 루트의 레벨은 1이 되고 한 층씩 내려갈수록 1씩 증가한다.
   - 트리의 **높이(height)**는 트리가 가지고 있는 최대 레벨을 말한다.
@@ -66,11 +66,11 @@
   - 이 방법의 문제점은 <span style="color:red">노드의 크기가 고정되지 않는다는 것이다.</span> 즉 노드에 붙어 있는 자식노드의 개수에 따라서 노드의 크기가 커지기도 하고 작아지기도 한다,
   - 노드의 크기가 일정하지 않으면 프로그램이 복잡하게 된다.
 
-  <img src="./8. 트리/normal tree.PNG">
+  <img src="./picture/normal tree.PNG">
 
   - **이진 트리** : 자식 노드의 개수가 2개인 트리
 
-  <img src="./8. 트리/binary tree.PNG">
+  <img src="./picture/binary tree.PNG">
 
 ## 8.2 이진 트리 소개
 
@@ -85,7 +85,7 @@
   - 공집합도 이진 트리라는 점을 주의해야 한다.
   - 이진 트리에는 서브 트리간의 순서가 존재한다. 따라서 왼쪽 서브 트리와 오른쪽 서브 트리는 서로 구별된다.
 
-  <img src="./8. 트리/difinition of binary tree.PNG">
+  <img src="./picture/difinition of binary tree.PNG">
 
 - **이진 트리의 정의**
 
@@ -93,7 +93,7 @@
   > - 루트와 왼쪽 서브 트리, 오른쪽 서브 트리로 구성된 노드들의 유한 집합으로 정의된다. 
   > - 이진 트리의 서브 트리들은 모두 이진 트리여야 한다.
 
-<img src="./8. 트리/subtree.PNG">
+<img src="./picture/subtree.PNG">
 
 ```
 - SUB3은 하나의 노드 D로만 이루어져 있지만 서브 트리가 공집합이기 때문에 이진 트리이다.
@@ -107,7 +107,7 @@
 
 - 서브 트리간에 순서가 존재한다는 점도 다른 점이다. 따라서 왼쪽 서브 트리와 오른쪽 서브 트리를 구별한다.
 
-  <img src="./8. 트리/example of binary.PNG">
+  <img src="./picture/example of binary.PNG">
 
   - 이진 트리의 예로서 수식에서 각 연산자들은 하나 또는 2개의 피연산자를 가지고 있다.
     - 왼쪽 피연산자는 왼쪽 서브 트리가 되고 오른족 피연산자는 오른쪽 서브 트리로 표현된다.
@@ -120,7 +120,7 @@
 
   - 이진 트리에서의 노드는 루트를 제외하면 정확하게 하나의 부모 노드를 가진다. 부모와 자식 간에는 정확하게 하나의 간선만이 존재한다.
 
-  <img src="./8. 트리/number of edge.PNG">
+  <img src="./picture/number of edge.PNG">
 
   - 높이가 h인 이진 트리의 경우, 최소 h개의 노드를 가지며 최대 2<sup>h</sup>-1 개의 노드를 가진다.
 
@@ -130,14 +130,15 @@
       
       <img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3D1%7D%5Eh%202%5E%7Bi-1%7D%20%3D%202%5Eh-1">
   
-<img src="./8. 트리/max_min_node.PNG">
-  
+
+<img src="./picture/max_min_node.PNG">
+
 - n개의 노드를 가지는 이진 트리의 높이는 최대 n이거나 최소 log<sub>2</sub>(n+1)이 된다.
     - 한 레벨 당 최소한 하나의 노드는 있어야 하므로 높이가 n을 넘을 수는 없다.
     - 높이 h의 이진 트리가 가질 수 있는 노드의 최대값은 2<sup>h</sup>-1이다. 따라서 n은 2<sup>h</sup>-1보다 작거나 같은 부등식이 성립하고 양변에 log를 취하여 정리하면 h는 log<sub>2</sub>(n+1)보다 크거나 같은 부등식이 된다.
     - h는 정수이어야 하므로 최소값은 log<sub>2</sub>(n+1)의 절댓값이 된다. 2.4는 올립 연산으로 3이 된다.
-  
-<img src="./8. 트리/max_min_height.PNG">
+
+<img src="./picture/max_min_height.PNG">
 
 
 
@@ -149,12 +150,12 @@
 
     - 높이 k인 포화 이진 트리는 정확하게 2<sup>k</sup>-1개의 노드를 가진다.
 
-    <img src="./8. 트리/full_number.PNG">
+    <img src="./picture/full_number.PNG">
 
     - 포화 이진 트리에는 각 노드에 번호를 붙일 수 있다.
       - 노드에 번호를 부여하는 방법은 레벨 단위로 왼쪽에서 오른족으로 번호를 붙이면 된다.
 
-    <img src="./8. 트리/full_tag.PNG">
+    <img src="./picture/full_tag.PNG">
 
   - **완전 이진 트리(complete binary tree)** : 높이가 k일 때 레벨 1부터 k-1까지는 노드가 모두 채워져 있고 마지막 레벨 k에서는 왼쪽부터 오른쪽으로 노드가 순서대로 채워져 있는 이진 트리이다.
 
@@ -162,7 +163,7 @@
     - 포화 이진 트리는 항상 완전 이진 트리이지만 그 역은 매번 성립하지는 않는다.
     - 포화 이진 트리의 노드 번호와 완전 이진 트리의 노드 번호는 1대 1로 대응한다.
 
-    <img src="./8. 트리/example_complete.PNG">
+    <img src="./picture/example_complete.PNG">
 
 
 
@@ -183,7 +184,7 @@
     - 여기서 인덱스 0은 사용되지 않는다.
     - 완전 이진 트리가 아닌 일반적인 이진 트리인 경우 배열 표현법을 사용하면 저장할 수는 있지만 기억공간의 낭비가 심해진다.
 
-  <img src="./8. 트리/array representation.PNG">
+  <img src="./picture/array representation.PNG">
 
   - 부모 노드와 자식 노드 간의 인덱스 관계
 
@@ -202,9 +203,9 @@
   - 이진 트리를 링크 표현법으로 표현하면 하나의 노드가 3개의 필드를 가지는데, 데이터를 저장하는 필드, 왼쪽 자식 노드와 오른쪽 자식 노드를 가리키는 2개의 표인터 필드를 가진다.
   - 2개의 포인터를 이용하여 부모 노드와 자식 노드를 연결한다.
 
-  <img src="./8. 트리/link node structure.PNG">
+  <img src="./picture/link node structure.PNG">
 
-  <img src="./8. 트리/link representation.PNG">
+  <img src="./picture/link representation.PNG">
 
   - 이진 트리를 링크 표현에 의해 나타내기 위해서는 구초제와 포인터 개념을 이용하여야 한다.
     - 구조체를 이용하여 노드의 구조를 정의하고 링크는 포인터의 개념을 이용하여 정의하면 된다.
@@ -233,7 +234,7 @@
   - 트리를 사용하는 목적은 트리의 노드에 자료를 저장하고 필요에 따라서 이 자료를 처리하기 위함이다.
   - 따라서 트리가 가지고 있는 자료를 순차적으로 순회하는 것은 이진 트리에서 중요한 연산이다.
 
-  <img src="./8. 트리/traversal.PNG">
+  <img src="./picture/traversal.PNG">
 
 ### 이진 트리 순회방법
 
@@ -261,7 +262,7 @@
 
 - **전위 순회** : 루트를 먼저 방문하고 그 다음에 왼쪽 서브 트리를 방문하고 오른쪽 서브 트리를 방문하는 순회 방법이다.
 
-  <img src="./8. 트리/structure pre.PNG">
+  <img src="./picture/structure pre.PNG">
 
   ```
   1. 루트 노드를 방문한다.
@@ -286,9 +287,9 @@
   >
   > 따라서 전체 트리와 똑같은 방식으로 서브 트리를 방문하면 된다.
 
-  <img src="./8. 트리/pre subtree.PNG">
+  <img src="./picture/pre subtree.PNG">
 
-  <img src="./8. 트리/preorder.PNG">
+  <img src="./picture/preorder.PNG">
 
 
 
@@ -296,7 +297,7 @@
 
 - **중위 순회** : 먼저 왼쪽 서브 트리를 방문하고, 루트, 오른쪽 서브 트리를 방문하는 순회 방법이다.
 
-  <img src="./8. 트리/structure in.PNG">
+  <img src="./picture/structure in.PNG">
 
   ```
   1. 왼쪽 서브 트리를 방문한다.
@@ -315,7 +316,7 @@
   4.				inorder(RIGHT(x));	// x의 오른쪽 서브 트리를 순환 호출하여 방문한다.
   ```
 
-  <img src="./8. 트리/inorder.PNG">
+  <img src="./picture/inorder.PNG">
 
 
 
@@ -323,7 +324,7 @@
 
 - **후위 순회** : 왼쪽 서브 트리를 먼저 방문한 후 오른쪽 서브 트리, 루트 순으로 방문하는 순회 방법이다.
 
-  <img src="./8. 트리/structure post.PNG">
+  <img src="./picture/structure post.PNG">
 
   ```
   1. 왼쪽 서브 트리의 모든 노드를 방문한다.
@@ -342,7 +343,7 @@
   4.				print DATA(x);		// x의 데이터를 출력한다.
   ```
 
-  <img src="./8. 트리/postorder.PNG">
+  <img src="./picture/postorder.PNG">
 
 ### 전위, 중위, 후위 순회 구현
 
@@ -405,7 +406,7 @@
   - 동일한 레벨의 경우에는 좌에서 우로 방문한다.
   - 지금까지의 순회법이 스택을 사용했던 것에 비해, 레벨 순회는 큐를 사용하는 순회법이다.
 
-  <img src="./8. 트리/level traversal.PNG">
+  <img src="./picture/level traversal.PNG">
 
   - 레벨 순회 코드는 큐에 하나라도 노드가 있으면 계속 반복하는 코드로 이루어져 있다.
     - 큐에 있는 노드를 꺼내어 방문한 다음, 그 노드의 자식 노드를 큐에 삽입하는 것으로 한번의 반복을 끝낸다. 이러한 반복을 큐에 더 이상의 노드가 없을 때까지 계속한다.
@@ -441,7 +442,7 @@
 
   - 피연산자들은 단말노드가 되며 연산자는 비단말 노드가 된다.
 
-  <img src="./8. 트리/expression traversal.PNG">
+  <img src="./picture/expression traversal.PNG">
 
   - 이 수식 트리들을 전위, 중위, 후위의 순회 방법으로 읽으면 각각 전위 표기 수식, 중위 표기 수식, 후위 표기 수식이 된다.
 
@@ -455,7 +456,7 @@
     - 루트보다 자식 노드들이 먼저 방문되는 순회 방법을 사용하여야 수식의 값을 계산할 수 있다.
     - 루트 노드보다 자식 노드를 먼저 방문하는 순회 방법은 후위 순회이다.
 
-  <img src="./8. 트리/post expression.PNG">
+  <img src="./picture/post expression.PNG">
 
   - **수식 트리의 계산 알고리즘 유사코드**
 
@@ -478,7 +479,7 @@
 
   - 단, 이진 트리를 사용하기 때문에 하나의 디렉토리 안에 다른 디렉토리가 2개를 초과하면 안된다.
 
-  <img src="./8. 트리/directory size.PNG">
+  <img src="./picture/directory size.PNG">
 
   - 하나의 디렉토리 안에 다른 디렉토리가 있을 수 있으므로 먼저 서브 디렉토리의 용량을 모두 계산한 다음에 루트 디렉토리의 용량을 계산하여야 할 것이다.
     - 따라서 후위 순회를 사용하여야 한다.
@@ -559,7 +560,7 @@
   - 각 서브 트리에 대하여 순환 호출을 하여야 한다.
   - 순환 호출을 하여 밥법은 값을 더하는 것이 아닌 반환된 값들 중에 가장 최대인 값을 구하여 반환하여야 한다.
 
-  <img src="./8. 트리/tree height.PNG">
+  <img src="./picture/tree height.PNG">
 
   - **트리의 높이 구하는 알고리즘 유사코드**
 
@@ -655,7 +656,7 @@
     >
     > 이진 탐색 트리는 이러한 탐색 작업을 효율적으로 하기 위한 자료 구조 이다.
 
-  <img src="./8. 트리/search terms.PNG">
+  <img src="./picture/search terms.PNG">
 
 ### 이진 탐색 트리의 정의
 
@@ -666,11 +667,11 @@
   > - 오른쪽 서브 트리의 키들은 루트의 키보다 크다.
   > - 왼쪽과 오른쪽 서브 트리도 이진 탐색 트리이다.
 
-  <img src="./8. 트리/BST.PNG">
+  <img src="./picture/BST.PNG">
 
   - 찾고자 하는 키값이 이진트리의 루트 노드의 키값과 비교하여 루트 노드보다 작으면 원하는 키값은 왼쪽 서브 트리에 있고, 루트 노드보다 크면 원하는 키값은 오른쪽 서브 트리에 있음을 알 수 있다.
 
-  <img src="./8. 트리/exp bst.PNG">
+  <img src="./picture/exp bst.PNG">
 
 
 
@@ -695,7 +696,7 @@
   		else return search(RIGHT(root), key);
   ```
 
-  <img src="./8. 트리/search operator.PNG">
+  <img src="./picture/search operator.PNG">
 
   ```C
   TreeNode* search(TreeNode *root, int key)
@@ -741,7 +742,7 @@
 
   - 이진 탐색 트리에서는 같은 키값을 갖는 노드가 없어야 하기 때문이고 탐색에 실패한 위치가 바로 새로운 노드를 삽입하는 위치가 되기 때문이다.
 
-  <img src="./8. 트리/insert operator.PNG">
+  <img src="./picture/insert operator.PNG">
 
   - 새로운 노드는 항상 단말 노드에 추가된다.
   - 단말 노드를 발견할 때까지 루트에서 키를 검색하기 시작한다. 단말 노드가 발견되면 새로운 노드가 단말 노드의 하위 노드로 추가된다.
@@ -798,7 +799,7 @@
 
   - 단말 노드를 삭제한다는 것은 단말 노드의 부모 노드를 찾아서 부모 노드 안에 링크 필드를 NULL로 만들어서 연결을 끊으면 된다.
 
-  <img src="./8. 트리/leaf delete.PNG">
+  <img src="./picture/leaf delete.PNG">
 
 
 
@@ -806,7 +807,7 @@
 
 - 삭제되는 노드가 왼쪽이나 오른족 서브 트리중 하나만 가지고 있는 경우에는 자기 노드는 삭제하고 서브 트리는 자기 노드의 부모 노드에 붙여주면 된다.
 
-  <img src="./8. 트리/one sub delete.PNG">
+  <img src="./picture/one sub delete.PNG">
 
 
 
@@ -819,11 +820,12 @@
     - 따라서 가장 적합한 노드는 왼쪽 서브 트리에서 가장 큰 값이거나 오른쪽 서브 트리에서 가장 작은 값으로 대체하여야 한다.
   - 이들 노드는 이진 탐색 트리를 중위 순회하였을 경우, 각각 선행 노드와 후속 노드에 해당한다.
   
-<img src="./8. 트리/successor node.PNG">
-  
-  <img src="./8. 트리/example delete.PNG">
 
-<img src="./8. 트리/teo sub delete.PNG">
+<img src="./picture/successor node.PNG">
+
+  <img src="./picture/example delete.PNG">
+
+<img src="./picture/teo sub delete.PNG">
 
 ```C
 // 이진 탐색 트리와 키가 주어지면 키가 저장된 노드를 삭제하고
@@ -882,11 +884,11 @@ TreeNode* min_value_node(TreeNode *node)
 
   - n개의 노드를 가지는 이진 탐색 트리의 경우, 일반적인 이진 트리의 높이는 [log<sub>2</sub>n]이므로 이진 탐색 트리 연산의 평균적인 경우의 시간 복잠도는 O(log<sub>2</sub>n)이다.
 
-  <img src="./8. 트리/Time complexity.PNG">
+  <img src="./picture/Time complexity.PNG">
 
   - 그러나 이는 좌우의 서브 트리가 균형을 이룰 경우이고 최악의 경우에는 한쪽으로 치우치는 경사 트리가 되어서 트리의 높이가 n이 된다. 이 경우에는 탐색, 삭제, 삽입 시간이 거의 선형 탑색과 같이 O(n)이 된다.
 
-  <img src="./8. 트리/Slanted Binary Tree.PNG">
+  <img src="./picture/Slanted Binary Tree.PNG">
 
   - 선형 탐색에 비하여 전혀 시간적으로 이득이 없다.
     - 이러한 최악의 경우를 방지하기 위하여 트리의 높이를 [log<sub>2</sub>n]으로 한정시키는 균형 기법이 필요하다.

@@ -60,6 +60,8 @@
 
   <img src="./picture/selection_sort.PNG">
 
+[Selection_sort](https://github.com/mgstyle97/TIL/blob/master/Data_structure/Sort/src/Selection_sort.c)
+
 ## 선택 정렬의 분석
 
 - 비교 횟수 : 두 개의 for 루프의 실행 횟수는 외부 루프는 n-1번 실행될 것이고 내부 루프는 0에서 n-2까지 변하는 i에 대하여 (n-1)-i번 반복될 것이다.

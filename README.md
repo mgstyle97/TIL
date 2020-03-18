@@ -17,8 +17,10 @@
   - [우선순위 큐](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Priority_queue)
   - [그래프 1](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Graph_1)
   - [그래프 2](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Graph_2)
+  - [정렬](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Sort)
   
 - 자바
   - [1. 자바 시작하기](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_1)
   - [2. 변수와 타입](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_2)
   - [3. 연산자](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_3)
+

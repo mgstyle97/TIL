@@ -18,6 +18,7 @@
   - [그래프 1](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Graph_1)
   - [그래프 2](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Graph_2)
   - [정렬](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Sort)
+  - [탐색](https://github.com/mgstyle97/TIL/tree/master/Data_structure/Search)
   
 - 자바
   - [1. 자바 시작하기](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_1)

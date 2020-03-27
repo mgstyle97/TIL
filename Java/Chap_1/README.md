@@ -20,7 +20,7 @@
 
 - **프로그램(program)** : 컴퓨터에서 특정 목적을 수행하기 위해 프로그래밍 언어로 작성된 소스를 기계어로 번역한 것을 말한다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Java/picture/compile.png">
+  <img src="./picture/compile.png">
 
 ## 1.2 자바란?
 
@@ -44,7 +44,7 @@
     - 자바는 아무리 작은 프로그램이라도 객체를 만들어 사용한다.
     - 처음부터 객체를 고려하여 설계되었기 때문에 객체 지향 언어가 가져야 할 캡슐화, 상속, 다형성 기능을 완벽하게 지원하고 있다.
 
-  <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Java/picture./object.PNG">
+  <img src="./picture./object.PNG">
 
 #### 함수적 스타일 코딩을 지원한다.
 
@@ -112,7 +112,7 @@
   - 자바 프로그램을 운영체제가 이해하는 기계어로 번역해서 실행해야 하므로 JVM은 운영체제에 맞게 설치되어야 한다.
   - JVM은 JDK 또는 JRE를 설치하면 자동으로 설치되는데, JDK와 JDE가 운영체제별로 제공된다.
 
-<img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Java/picture/JVM.PNG">
+<img src="./picture/JVM.PNG">
 
 > - 자바 프로그램은 확장자가 .java인 파일을 작성하는 것부터 시작된다. 이것을 소스 파일이라고 한다.
 > - 소스 파일을 컴파일러(javac.exe)로 컴파일하면 확장자가 .class인 바이트 코드 파일이 생성된다.
@@ -137,7 +137,7 @@
 
 ### 1.4.1 소스 작성에서부터 실행까지
 
-<img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Java/picture/program execution order.PNG">
+<img src="./picture/program execution order.PNG">
 
 > - 자바 프로그램을 개발하기 위해서는 우선 파일 확장명이 .java인 텍스트 파일을 생성하고 프로그램 소스를 작성한다.
 >
@@ -166,7 +166,7 @@
 >
 > - 번역을 한 후에 main() 메소드를 찾아 실행시킨다.
 >
->   <img src="C:/Users/mgsty/OneDrive/Desktop/김민기/Java/picture/run.PNG">
+>   <img src="./picture/run.PNG">
 
 - 소스 파일 작성시 주의해야 할 점
 

@@ -7,7 +7,7 @@
   - **제어문** : 실행 흐름을 개발자가 원하는 방향으로 바꿀 수 있도록 해주는 흐름 제어문을 말한다.
     - 제어문은 조건식과 중괄호 {} 블록으로 구성되는데, 조건식의 연산 결과에 따라 블록 내부의 실행 여부가 결정된다.
 
-  <img src="./picture/contorl_statement.PNG">
+  <img src="./picture/contorl_statement.png">
 
   - 제어문의 종류에는 조건문과 반복문이 있는데, 조건문에는 if문, switch문이 있고 반복문에는 for문,  while문, do-while문이 있다.
     - 조건문을 사용한다면 제어문 블록이 실행 완료되었을 경우 정상 흐름으로 돌아온다.
@@ -24,7 +24,7 @@
   - 조건식에는 true 또는 false 값을 산출할 수 있는 연산식이나, boolean 변수가 올 수 있다.
   - 조건식이 true이면 블록을 실행하고 false이면 블록을 실행하지 않는다.
 
-  <img src="./picture/if.PNG">
+  <img src="./picture/if.png">
 
   - 중괄호 {} 블록은 여러 개의 실행문을 하나로 묶기 위해 작성된다.
     - 만약 조건식 true가 될 때 실행해야 할 문장이 하나 밖에 없다면 생략할 수 있다.
@@ -38,7 +38,7 @@
   - if 조건식이 true이면 if 문의 블록이 실행되고, 조건식이 false이면 else 블록이 실행된다.
   - 조건식의 결과에 따라 이 두 개의 블록 중 어느 한 블록의 내용만 실행하고 전체 if문을 벗어나게 된다.
 
-  <img src="./picture/if_else.PNG">
+  <img src="./picture/if_else.png">
 
 ### 4.2.3 if-else if-else 문
 
@@ -48,7 +48,7 @@
   - else if문의 수는 제한이 없으며 여러 개의 조건식 중 true가 되는 블록만 실행하고 전체 if문을 벗어나게 된다.
   - else if 블록의 마지막에는 else 블록을 추가할 수 있는데, 모든 조건식이 false일 경우 else 블록을 실행하고 if문을 벗어나게 된다.
 
-  <img src="./picture/else_if.PNG">
+  <img src="./picture/else_if.png">
 
 ### 4.2.4 중첩 if 문
 
@@ -57,7 +57,7 @@
   - 중첩의 단계는 제한이 없기 때문에 실행 흐름을 잘 판단해서 작성하면 된다.
   - 중첩은 if 문만 되는 것은 아니며, if 문, switch 문, for 문, while 문, do-while 문은 서로 중첩시킬 수 있다.
 
-  <img src="./picture/nested_if.PNG">
+  <img src="./picture/nested_if.png">
 
 ### 4.2.5 switch 문
 
@@ -67,7 +67,7 @@
   - if문은 조건식의 결과가 true, false 두가지 밖에 없기 때문에 경우의 수가 많아질수록 else-if를 반복적으로 추가해야 하므로 코드가 복잡해진다.
   - 그러나 switch문은 변수의 값에 따라서 실행문이 결정되기 때문에 같은 기능의 if문보다 코드가 간결하다.
 
-  <img src="./picture/switch.PNG">
+  <img src="./picture/switch.png">
 
   - switch문은 괄호 안의 값과 동일한 값을 갖는 case로 가서 실행문을 시킨다.
     - 만약 괄호 안의 값과 동일한 값을 갖는 case가 없으면 default로 가서 실행문을 실행시킨다.
@@ -112,7 +112,7 @@
   - 코드가 간결하면 개발 시간을 줄일 수 있고, 오루가 날 확률도 줄어든다.
   - for문은 주어진 횟수만큼 실행문을 반복 실행할 때 적합한 반복 제어문이다.
 
-  <img src="./picture/for.PNG">
+  <img src="./picture/for.png">
 
   > 1. for문이 실행될 때 초기화식이 제일 먼저 실행된다.
   > 2. 조건식을 평가하여 true이면 실행문을 실행시키고, false이면 for문 블록을 실행하지 않고 끝나게 된다.
@@ -156,7 +156,7 @@
 
   - 조건식에는 비교 또는 논리 연산식이 주로 오는데, 조건식이 false가 되면 반복 행위를 멈추고 while문을 종료한다.
 
-  <img src="./picture/while.PNG">
+  <img src="./picture/while.png">
 
   > 1.  while문이 처음 실행될 때 조건식을 평가한다. 평가 결과가 true이면 실행문을 실행한다.
   > 2. 실행문이 모두 실행되면 다시 조건식으로 되돌아가서 조건식을 평가한다.
@@ -178,7 +178,7 @@
   - 이 때 do-while문을 사용할 수 있다.
   - do-while문을 작성 시 주의할 점은 while() 뒤에 반드시 세미콜론(;)을 붙여야 한다.
 
-  <img src="./picture/do_while.PNG">
+  <img src="./picture/do_while.png">
 
   > 1. do-while문은 처음 실행될 때 실행문을 우선 실행한다.
   > 2. 실행문이 모두 실행되면 조건식을 평가하는데, 그결과가 true이면 다시 실행문을 반복하게 된다.
@@ -205,20 +205,20 @@
 
 - **break문** : 반복문인 for문, while문, do-while문을 실행 중지할 때 사용된다. 또한 switch문에서도 break문을 사용하여 switch문을 종료한다.
 
-  <img src="./picture/break.PNG">
+  <img src="./picture/break.png">
 
   - break문은 대개 if문과 같이 사용되어 if문의 조건식에 따라 for문과 while문을 종료할 때 사용한다.
 
   - 만약 반복문이 중첩되어 있을 경우 break문은 가장 가까운 반복문만 종료하고 바깥쪽 반복문은 종료시키지 않는다.
     - 중첩된 반복문에서 가장 바깥쪽 반복문까지 종료시키려면 바깥쪽 반복문에 이름(라벨)을 붙이고, "break 이름;"을 사용하면 된다.
 
-  <img src="./picture/break_label.PNG">
+  <img src="./picture/break_label.png">
 
 ### 4.3.5 continue문
 
 - **continue문** : for문, while문, do-while문에서만 사용되는데, 블록 내부에서 continue문이 실행되면 for문의 증감식 또는 while문, do-while문의 조건식으로 이동한다.
 
-  <img src="./picture/continue.PNG">
+  <img src="./picture/continue.png">
 
   - continue문은 반복문을 종료하지 않고 계속 반복을 수행한다는 점이 break문과 다르다.
   - break문과 마찬가지로 continue문도 대개 if문과 같이 사용되는데, 특정 조건을 만족하는 경우에 continue문을 실행해서 그 이후의 문장을 실행하지 않고 다음 반복으로 넘어간다.

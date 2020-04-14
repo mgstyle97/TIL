@@ -630,8 +630,6 @@
 
 - 열거 타입도 참조 타입이기 때문에 열거 타입 내부에 열거 상수는 객체로 생성된다.
 
-  <img src="./picture/enum_object.png">
-
 - 열거 변수의 값을 열거 상수로 초기화 한다면 같은 객체를 가리키고 있기 때문에 == 연산에서 true가 반환된다.
 
   ```java
@@ -657,3 +655,87 @@
   ```
 
   - Calendar 객체를 얻었다면 get() 메소드를 이용해서 년, 월, 일, 요일, 시간, 분, 초를 얻을 수 있다.
+  
+  ```java
+  int year = now.get(Calendar.YEAR);
+  int month = now.get(Calendar.MONTH) + 1;
+  int day = now.get(Calendar.DAY_OF_MONTH);
+  int week = now.get(Calendar.DAY_OF_WEEK);
+  int hour = now.get(Calendar.HOUR);
+  int minute = now.get(Calendar.MINUTE);
+  int second = now.get(Calendar.SECOND);
+  ```
+
+### 5.7.3 열거 객체의 메소드
+
+- 열거 객체의 열거 상수의 문자열을 내부 데이터로 가지고 있다.
+
+- 메소드는 java.lang.Enum 클래스에 선언된 메소드인데, 열거 객체에서 사용할 수 있는 이유는 모든 열거 타입은 컴파일 시에 Enum 클래스를 상속하게 되어 있기 때문이다.
+
+  <img src="./picture/enum_object.png">
+
+| 리턴 타입 | 메소드(매개 변수)    | 설명                                  |
+| --------- | -------------------- | ------------------------------------- |
+| String    | name()               | 열거 객체의 문자열을 리턴             |
+| int       | ordinal()            | 열거 객체의 순번(0부터 시작)을 리턴   |
+| int       | compareTo()          | 열거 객체를 비교해서 순번 차이를 리턴 |
+| 열거 타입 | valueOf(String name) | 주어진 문자열의 열거 객체를 리턴      |
+| 열거 배열 | values()             | 모든 열거 객체들을 배열로 리턴        |
+
+#### name() 메소드
+
+- **name()** 메소드는 열거 객체가 가지고 있는 문자열을 리턴한다.
+
+  - 이때 리턴되는 문자열은 열거 타입을 정의할 때 사용한 상수 이름과 동일하다.
+
+  ```java
+  Week today = Week.SUNDAY;
+  String name = today.name();
+  ```
+
+#### ordinal() 메소드
+
+- **ordinal()** 메소드는 전체 열거 객체 중 몇 번째 열거 객체인지 알려준다.
+
+  - 열거 객체의 순번은 열거 타입을 정의할 때 주어진 순번을 말하는데, 0부터 시작한다.
+
+  ```java
+  Week today = Week.SUNDAY;
+  int ordinal = today.ordinal();
+  ```
+
+#### compareTo() 메소드
+
+- **compareTo()** 메소드는 매개값으로 주어진 열거 객체를 기준으로 전후로 몇 번째 위치하는 지를 비교한다.
+
+  - 만약 열거 객체가 매개값의 열거 객체보다 순번이 빠르다면 음수가, 순번이 늦다면 양수가 리턴된다.
+
+  ```java
+  Week day1 = Week.MONDAY;
+  Week day2 = Week.WEDNESDAY;
+  int result1 = day1.compareTo(day2);	// -2
+  int result2 = day2.compareTo(day1);	// 2
+  ```
+
+#### valueOf() 메소드
+
+- **valueOf()** 메소드는 매개값으로 주어지는 문자열과 동일한 문자열을 가지는 열거 객체를 리턴한다.
+
+  - 이 메소드는 외부로부터 문자열을 입력받아 열거 객체로 변환할 때 유용하게 사용할 수 있다.
+
+  ```java
+  Week weekDay = Week.valueOf("SATURDAY");
+  ```
+
+#### values() 메소드
+
+- **values()** 메소드는 열거 타입의 모든 열거 객체들을 배열로 만들어 리턴한다.
+
+  ```java
+  Week[] days = Week.values();
+  for(Week day : days) {
+  	System.out.println(day);
+  }
+  ```
+
+  <img src="./picture/values.png">

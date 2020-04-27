@@ -27,3 +27,5 @@
   - [3. 연산자](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_3)
   - [4. 조건문과 반복문](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_4)
   - [5. 참조 타입](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_5)
+  - [6. 클래스](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_6)
+  - [7. 상속](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_7)

@@ -29,3 +29,5 @@
   - [5. 참조 타입](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_5)
   - [6. 클래스](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_6)
   - [7. 상속](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_7)
+  
+  - [8. 인터페이스](https://github.com/mgstyle97/TIL/tree/master/Java/Chap_8)
